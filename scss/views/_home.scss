@@ -1,0 +1,83 @@
+/* View Home */
+.pre-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 85vw;
+  height: 1vh;
+  margin: 1.5rem auto;
+
+  .logo {
+    height: 40px;
+    width: auto;
+  }
+
+  .session {
+    display: flex;
+    align-items: baseline;
+
+    a {
+      color: $blue0;
+      padding-right: 1rem;
+    }
+  }
+}
+
+.cover {
+  display: flex;
+  margin: 0 auto;
+  height: 95vh;
+  width: 100vw;
+  max-height: 1100px;
+
+  .container {
+    height: 60vh;
+    
+    .title-container {
+      background: linear-gradient(to right, $blue0, $blue1);
+      padding: 3rem 1rem;
+      
+      h1 {
+        color: $white;
+        font-size: 3rem;
+      }
+      .title {
+        overflow: hidden;
+
+        .door {
+          color: $green1;
+          font-style: italic;
+        }
+      }
+
+      p {
+        font-size: 1.5rem;
+        font-style: italic;
+        color: $green1;
+
+        .kimura {
+          text-transform: uppercase;
+          font-weight: 700;
+        }
+      }
+    }
+
+    .banner {
+      width: 85%;
+      height: auto;
+    }
+  }
+}
+
+.features {
+  background-color: $blue2;
+  padding: 2rem;
+
+  h2 {
+    margin-bottom: 0.2rem;
+  }
+
+  h3 {
+    color: $green1;
+  }
+}

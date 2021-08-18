@@ -1,0 +1,144 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+.pre-header .session a {
+  color: #FAFAFA;
+  text-decoration: none;
+}
+.pre-header .session .create-user {
+  background: linear-gradient(to right, #226bca, #0c107c);
+  padding: 0.4rem 0.5rem;
+  border-radius: 10px;
+  border: none;
+}
+
+/* View Home */
+.pre-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 85vw;
+  height: 1vh;
+  margin: 1.5rem auto;
+}
+.pre-header .logo {
+  height: 40px;
+  width: auto;
+}
+.pre-header .session {
+  display: flex;
+  align-items: baseline;
+}
+.pre-header .session a {
+  color: #0c107c;
+  padding-right: 1rem;
+}
+
+.cover {
+  display: flex;
+  margin: 0 auto;
+  height: 95vh;
+  width: 100vw;
+  max-height: 1100px;
+}
+.cover .container {
+  height: 60vh;
+}
+.cover .container .title-container {
+  background: linear-gradient(to right, #0c107c, #226bca);
+  padding: 3rem 1rem;
+}
+.cover .container .title-container h1 {
+  color: #FAFAFA;
+  font-size: 3rem;
+}
+.cover .container .title-container .title {
+  overflow: hidden;
+}
+.cover .container .title-container .title .door {
+  color: #0dd99a;
+  font-style: italic;
+}
+.cover .container .title-container p {
+  font-size: 1.5rem;
+  font-style: italic;
+  color: #0dd99a;
+}
+.cover .container .title-container p .kimura {
+  text-transform: uppercase;
+  font-weight: 700;
+}
+.cover .container .banner {
+  width: 85%;
+  height: auto;
+}
+
+.features {
+  background-color: #e0edff;
+  padding: 2rem;
+}
+.features h2 {
+  margin-bottom: 0.2rem;
+}
+.features h3 {
+  color: #0dd99a;
+}
+
+.navbar {
+  background-color: #0c107c;
+}
+.navbar .navbar-nav .nav-link {
+  color: #FAFAFA;
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+}
+.main .sidebar {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  background-color: #0c107c;
+  height: 100%;
+  width: 5%;
+}
+.main .page-container {
+  background-color: #e0edff;
+  height: 100vh;
+  width: 95vw;
+}
+.main .page-container .disponibilidades {
+  display: flex;
+  flex-direction: column;
+  line-height: 0.5;
+  background-color: #FAFAFA;
+  padding: 1rem 1rem 0 1rem;
+  border-radius: 5px;
+  border: 2px solid #0c107c;
+}
+.main .page-container .disponibilidades .saldos {
+  display: flex;
+}
+.main .page-container .disponibilidades .instruments-conts {
+  height: 20vh;
+}
+.main .page-container .disponibilidades .buttons {
+  display: flex;
+}
+.main .page-container .disponibilidades .buttons .comprar {
+  background-color: #d9140d;
+  border-radius: 5px;
+  border: 2px solid #a70600;
+}
+
+/*# sourceMappingURL=style.css.map */

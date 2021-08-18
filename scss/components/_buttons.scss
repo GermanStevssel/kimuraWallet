@@ -1,0 +1,15 @@
+.pre-header {
+  .session {
+    a {
+      color: $white;
+      text-decoration: none;
+    }
+    
+    .create-user {
+      background: linear-gradient(to right, $blue1, $blue0);
+      padding: 0.4rem 0.5rem;
+      border-radius: 10px;
+      border: none;
+    }
+  }
+}
