@@ -7,5 +7,13 @@
   },
   "author": "",
   "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GermanStevssel/kimuraWallet.git"
+  },
+  "bugs": {
+    "url": "https://github.com/GermanStevssel/kimuraWallet/issues"
+  },
+  "homepage": "https://github.com/GermanStevssel/kimuraWallet#readme",
   "description": ""
 }

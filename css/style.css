@@ -6,11 +6,11 @@
 }
 
 .pre-header .session a {
-  color: #FAFAFA;
+  color: #FFFFFF;
   text-decoration: none;
 }
 .pre-header .session .create-user {
-  background: linear-gradient(to right, #226bca, #0c107c);
+  background: linear-gradient(to right, #3454db, #0c107c);
   padding: 0.4rem 0.5rem;
   border-radius: 10px;
   border: none;
@@ -49,11 +49,11 @@
   height: 60vh;
 }
 .cover .container .title-container {
-  background: linear-gradient(to right, #0c107c, #226bca);
+  background: linear-gradient(to right, #0c107c, #3454db);
   padding: 3rem 1rem;
 }
 .cover .container .title-container h1 {
-  color: #FAFAFA;
+  color: #FFFFFF;
   font-size: 3rem;
 }
 .cover .container .title-container .title {
@@ -92,7 +92,7 @@
   background-color: #0c107c;
 }
 .navbar .navbar-nav .nav-link {
-  color: #FAFAFA;
+  color: #FFFFFF;
 }
 
 .main {
@@ -108,12 +108,12 @@
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
-  background-color: #0c107c;
+  background-color: #3454db;
   height: 100%;
   width: 5%;
 }
 .main .page-container {
-  background-color: #e0edff;
+  background-color: #eff3f6;
   height: 100vh;
   width: 95vw;
 }
@@ -121,7 +121,7 @@
   display: flex;
   flex-direction: column;
   line-height: 0.5;
-  background-color: #FAFAFA;
+  background-color: #FFFFFF;
   padding: 1rem 1rem 0 1rem;
   border-radius: 5px;
   border: 2px solid #0c107c;
