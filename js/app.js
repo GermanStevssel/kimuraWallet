@@ -2,43 +2,6 @@
 let user;
 let instSelected;
 let qty = 0;
-// Clase para crear instancias de clientes
-class Client {
-	constructor(dni, name, lastName, balance) {
-		this.dni = dni;
-		this.name = name;
-		this.lastName = lastName;
-		this.balance = balance;
-    this.wallet = [];
-	}
-  //Método para actualizar la disponibilidad de dinero del cliente
-	updateBalance(buy) { 
-		this.balance -= buy;
-	}
-  //Método para actualizar las tenencias del cliente en su billetera
-  updateWallet(operation) {
-    this.wallet.push(operation);
-  }
-}
-// Clase para crear instancias de instrumentos
-class Instrument {
-	constructor(id, type, ticker, price) {
-    this.id = id;
-		this.type = type;
-		this.ticker = ticker;
-		this.price = price;
-	}
-}
-// Clase para crear instancias de operaciones
-class Operations {
-  constructor(date,instrument, qty, price, value) {
-    this.date = date;
-    this.instrument = instrument.ticker;
-    this.qty = qty;
-    this.price = price;
-    this.value = value;
-  }
-}
 // Array que contendra las ofertas de instrumentos financieros
 const INST_CATALOGUE = []
 //Generando instancias de Instrument
@@ -68,10 +31,12 @@ const createUser = () => {
 	}
 
 	user = new Client(dni, name, lastName, balance);
+
+  showUser(user)
 };
 // Función para encontrar el instrumento que seleccionó el usuario
 function findInstrument(instIndex) {
-  let instSelected = INST_CATALOGUE.find(element => element.id == instIndex);
+  instSelected = INST_CATALOGUE.find(element => element.id == instIndex);
   
   return instSelected;
 }
@@ -87,7 +52,7 @@ const setQuantity= (instrument) => {
 
   return qty;
 }
-/* Función para generar un onjeto de la clase Operations y guardarla en el array wallet
+/* Función para generar un objeto de la clase Operations y guardarla en el array wallet
 del usuario*/
 function operation(instrument, qty, price, value, user) {
   let date = new Date()
@@ -176,4 +141,12 @@ function main() { // Solicita al usuario si desea abrir una cuenta
 }
 // Invocación de función principal para que se ejecute todo el código
 main();
+
+let totalElement = document.getElementById("total");
+
+let total = document
+
+
 console.log(user);
+console.log(user.balance)
+console.log(user.wallet)
