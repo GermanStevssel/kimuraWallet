@@ -61,7 +61,7 @@ function operation(instrument, qty, price, value, user) {
   user.updateWallet(add)
 }
 // Función para realizar la compra del instrumento seleccionado
-function buy(balance) { //Solicita el instrumento que desea comprar
+function buy(user) { //Solicita el instrumento que desea comprar
 	let userSelection = prompt(`¿Qué desea comprar?\n
                           1-BTC | 2-ETH | 3-AAPL | 4-MSFT\n
                           Indique con el número identificador`);
@@ -74,12 +74,14 @@ function buy(balance) { //Solicita el instrumento que desea comprar
   }
   /*Invocar la función findInstrument() para asignar el objeto del instrumento 
   a comprar a la variable instSelected*/
-  let instSelected = findInstrument(userSelection);
+  instSelected = findInstrument(userSelection);
   
   qty = setQuantity(instSelected)
 
+  let balance = user.balance; //
   let price = instSelected.price
   let value = qty * price;
+
 
   if (balance >= value) { 
     if (qty == 1) {
@@ -124,13 +126,14 @@ function main() { // Solicita al usuario si desea abrir una cuenta
     let balance = user.balance; // Asignación a variable balance, el saldo del usuario
     // Ciclo while para generar varias instancias de compras
     while (keepBuying) {
-      buy(balance) // Invocación de la función de comprar instrumentos financieros
+      buy(user) // Invocación de la función de comprar instrumentos financieros
       // Control de flujo de código en función del saldo del usuario
       if (balance > 0) {
         keepBuying = confirm(`Su saldo es de ${user.balance}
         ¿Desea continuar comprando?`)
       } else {
         alert("Su saldo es de $0")
+        keepBuying = false;
       }
     }
     // Invocación de función abstract, para mostrar el historial de transacciones
@@ -142,10 +145,7 @@ function main() { // Solicita al usuario si desea abrir una cuenta
 // Invocación de función principal para que se ejecute todo el código
 main();
 
-let totalElement = document.getElementById("total");
-
-let total = document
-
+showBalance(user)
 
 console.log(user);
 console.log(user.balance)

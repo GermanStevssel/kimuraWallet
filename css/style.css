@@ -129,6 +129,9 @@
   border-radius: 5px;
   border: 2px solid #0c107c;
 }
+.main .page-container .disponibilidades .balance-items {
+  margin-bottom: 1rem;
+}
 .main .page-container .disponibilidades .saldos {
   display: flex;
 }
