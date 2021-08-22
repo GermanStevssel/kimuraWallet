@@ -22,9 +22,10 @@ class Client {
 }
 // Clase para crear instancias de instrumentos
 class Instrument {
-	constructor(id, type, ticker, price) {
+	constructor(id, type, name, ticker, price) {
     this.id = id;
 		this.type = type;
+    this.name = name;
 		this.ticker = ticker;
 		this.price = price;
 	}
@@ -33,7 +34,8 @@ class Instrument {
 class Operations {
   constructor(date,instrument, qty, price, value) {
     this.date = date;
-    this.instrument = instrument.ticker;
+    this.ticker = instrument.ticker;
+    this.name = instrument.name;
     this.qty = qty;
     this.price = price;
     this.value = value;

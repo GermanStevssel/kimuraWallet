@@ -5,10 +5,10 @@ let qty = 0;
 // Array que contendra las ofertas de instrumentos financieros
 const INST_CATALOGUE = []
 //Generando instancias de Instrument
-const BTC = new Instrument(1, "Cryptocurrency", "BTC", 43215);
-const ETH = new Instrument(2, "Cryptocurrency", "ETH", 2200);
-const AAPL = new Instrument(3, "Stock", "AAPL", 146.14);
-const MSFT = new Instrument(4, "Stock", "MSFT", 289.46);
+const BTC = new Instrument(1, "Cryptocurrency", "Bitcoin", "BTC", 43215);
+const ETH = new Instrument(2, "Cryptocurrency", "Ethereum", "ETH", 2200);
+const AAPL = new Instrument(3, "Stock", "Apple", "AAPL", 146.14);
+const MSFT = new Instrument(4, "Stock", "Microsoft", "MSFT", 289.46);
 // Pusheando los objetos al array de catalogo de instrumentos financieros
 INST_CATALOGUE.push(BTC, ETH, AAPL, MSFT)
 console.log(INST_CATALOGUE)
