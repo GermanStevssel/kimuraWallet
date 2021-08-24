@@ -102,11 +102,14 @@
 }
 .pre-header .session {
   display: flex;
-  align-items: baseline;
+  align-items: center;
 }
 .pre-header .session a {
   color: #0c107c;
   padding-right: 1rem;
+}
+.pre-header .session a:nth-child(3) {
+  color: #FFFFFF;
 }
 
 .cover {
@@ -120,8 +123,10 @@
   height: 60vh;
 }
 .cover .container .title-container {
+  border-radius: 20px;
   background: linear-gradient(to right, #0c107c, #3454db);
-  padding: 3rem 1rem;
+  box-shadow: 5px 0 12px 0 rgba(0, 0, 0, 0.16);
+  padding: 3rem 2rem;
 }
 .cover .container .title-container h1 {
   color: #FFFFFF;
@@ -227,7 +232,7 @@
   opacity: 0.7;
 }
 
-.bModal__overlay {
+.overlay {
   display: none;
   position: fixed;
   top: 0;
@@ -236,7 +241,7 @@
   width: 100%;
   height: 100vh;
 }
-.bModal__overlay::before {
+.overlay::before {
   content: "X";
   color: #FAFAFA;
   font-size: 1.5em;
@@ -246,8 +251,7 @@
   top: 1rem;
   opacity: 0.9;
 }
-.bModal__overlay .buyModal,
-.bModal__overlay .sellWindow {
+.overlay .buyModal {
   /* visibility: hidden; */
   display: flex;
   flex-direction: column;
@@ -264,45 +268,37 @@
   bottom: 0;
   margin: auto;
 }
-.bModal__overlay .buyModal h2,
-.bModal__overlay .sellWindow h2 {
+.overlay .buyModal h2 {
   font-size: 1.5rem;
   text-align: center;
 }
-.bModal__overlay .buyModal .buyModal__Content,
-.bModal__overlay .sellWindow .buyModal__Content {
+.overlay .buyModal .buyModal__Content {
   display: flex;
   justify-content: center;
   flex-direction: column;
   align-items: center;
 }
-.bModal__overlay .buyModal .buyModal__Content .form,
-.bModal__overlay .sellWindow .buyModal__Content .form {
+.overlay .buyModal .buyModal__Content .form {
   display: flex;
   flex-direction: column;
   width: 45%;
 }
-.bModal__overlay .buyModal .buyModal__Content .form ul,
-.bModal__overlay .sellWindow .buyModal__Content .form ul {
+.overlay .buyModal .buyModal__Content .form ul {
   padding: 0;
 }
-.bModal__overlay .buyModal .buyModal__Content .form ul li,
-.bModal__overlay .sellWindow .buyModal__Content .form ul li {
+.overlay .buyModal .buyModal__Content .form ul li {
   list-style: none;
 }
-.bModal__overlay .buyModal .buyModal__Content .form ul li .inst,
-.bModal__overlay .sellWindow .buyModal__Content .form ul li .inst {
+.overlay .buyModal .buyModal__Content .form ul li .inst {
   display: flex;
   justify-content: space-between;
   margin: 1rem;
 }
-.bModal__overlay .buyModal .buyModal__Content .form ul li .inst .selection,
-.bModal__overlay .sellWindow .buyModal__Content .form ul li .inst .selection {
+.overlay .buyModal .buyModal__Content .form ul li .inst .selection {
   position: relative;
   z-index: 300;
 }
-.bModal__overlay .buyModal .buyModal__Content .form ul li .inst input,
-.bModal__overlay .sellWindow .buyModal__Content .form ul li .inst input {
+.overlay .buyModal .buyModal__Content .form ul li .inst input {
   width: 92px;
 }
 

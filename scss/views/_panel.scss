@@ -71,7 +71,7 @@
   }
 }
 
-.bModal__overlay {
+.overlay {
   display: none;
   position: fixed;
   top: 0;
@@ -91,8 +91,7 @@
     opacity: 0.9;
   }
   
-  .buyModal, 
-  .sellWindow {
+  .buyModal {
     /* visibility: hidden; */
     display: flex;
     flex-direction: column;

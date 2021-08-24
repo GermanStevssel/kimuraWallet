@@ -14,11 +14,15 @@
 
   .session {
     display: flex;
-    align-items: baseline;
+    align-items: center;
 
     a {
       color: $blue0;
       padding-right: 1rem;
+
+      &:nth-child(3) {
+        color: $white;
+      }
     }
   }
 }
@@ -34,8 +38,10 @@
     height: 60vh;
     
     .title-container {
+      border-radius: 20px;
       background: linear-gradient(to right, $blue0, $blue1);
-      padding: 3rem 1rem;
+      box-shadow: 5px 0 12px 0 rgba(0, 0, 0, 0.16);
+      padding: 3rem 2rem;
       
       h1 {
         color: $white;
