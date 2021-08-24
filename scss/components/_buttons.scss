@@ -13,3 +13,78 @@
     }
   }
 }
+
+.depositBtn {
+  color: $white;
+  font-size: 0.8rem;
+  font-weight: 700;
+  padding: 0.1rem 0.4rem;
+  text-transform: uppercase;
+  background-color: $blue0;
+  border-radius: 5px;
+  border: 2px solid $blue0;
+  margin: 0 auto;
+
+  &:hover {
+    background-color: $blue1;
+    border: 2px solid $blue1;
+  }
+}
+
+.buttons {
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+
+  .comprar {
+    color: $white;
+    font-weight: 700;
+    text-transform: uppercase;
+    width: 105px;
+    margin: 0 3rem;
+    padding: 0.7rem 0;
+    background-color: $green1;
+    border-radius: 5px;
+    border: 2px solid $green1;
+
+    &:active {
+      background-color: $green0;
+      border-color: $green0;
+    }
+  }
+
+  .vender {
+    color: $white;
+    font-weight: 700;
+    text-transform: uppercase;
+    width: 105px;
+    margin: 0 3rem;
+    padding: 0.7rem 0;
+    background-color: $red1;
+    border-radius: 5px;
+    border: 2px solid $red1;
+
+    &:active {
+      background-color: $red0;
+      border-color: $red0;
+    }
+  }
+}
+
+.confirmBtn {
+  margin: 0.5rem auto 0;
+  width: 60%;
+  padding: 0.7rem;
+  background-color: $green1;
+  border-radius: 5px;
+  border: none;
+  color: white;
+  font-size: 1.2rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+
+  :active {
+    background-color: #5DC460;
+  }
+}

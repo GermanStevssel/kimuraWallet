@@ -19,67 +19,95 @@
         <div class="button-container"></div>
       </section>
       <section class="page-container">
-        <div class="container mt-4 d-flex justify-content-end">
-          <h1 class="me-4" id="user">
-            User Wallet
-          </h1>
-          <div class="disponibilidades">
-            <!-- <div class="saldos">
-              <div>
-                <p class="me-1 mb-1">
-                  Total: 
-                </p>
-              </div>
-              <div id="total">
-              </div>
-            </div>
-            <div class="saldos">
-              <div>
-                <p class="me-1 mb-1">
-                  Instrumentos: 
-                </p>
-              </div>
-              <div>
-                <p>
-                  $55.000
-                </p>
-              </div>
-            </div>
-            <div class="saldos">
-              <div>
-                <p class="me-1 mb-1">
-                  Disponible: 
-                </p>
-              </div>
-              <div>
-                <p>
-                  $70.000
-                </p>
-              </div>
-            </div> -->
+        <div class="container mt-2 d-flex justify-content-end">
+          <div class="d-flex flex-column justify-content-start">
+            <h1 class="me-4" id="user">
+              User Wallet
+            </h1>
+            <button id="deposit" class="depositBtn" type="button" accesskey="f">Depositar</button>
+          </div>
+          <div id="dispo" class="disponibilidades">
           </div>
         </div>
-        <div class="container">
-          <div class="instruments-cont container d-flex justify-content-around mt-4">
-            <div class="instruments">
+
+        <!-- Inicio sección de instrumentos -->
+        <section class="container">
+          <h3>
+            Instrumentos
+          </h3>
+          <div id="instruments" class="display-conts container">
+            <p>No posee ningún instrumento en cartera</p>
+            <!-- <div class="instruments">
               <h3>Criptomonedas</h3>
             </div>
             <div class="instruments">
               <h3>Acciones</h3>
+            </div> -->
+          </div>
+        </section>
+        <!-- Fin sección de instrumentos -->
+
+        <!-- Inicio sección de botones -->
+        <section class="buttons">
+          <button id="buyBtn" class="comprar">Comprar</button>
+          <button id="sellBtn" class="vender">vender</button>
+        </section>
+        <!-- Fin sección de botones -->
+
+        <!-- Sección Historial-->
+        <section class="container">
+          <h3>
+            Historial
+          </h3>
+          <div class="display-conts container">
+            <p>Aún no realizó ninguna transacción</p>
+          </div>
+        </section>
+        <!-- Fin Sección Historial-->
+
+        <!-- Modal de compra -->
+        <div id="modal" class="bModal__overlay">
+          <div class="buyModal">
+            <div class="buyModal__Content">
+              <h2>Seleccione el instrumento que desea comprar</h2>
+              <form id="bform" class="form">
+                <ul>
+                  <li>
+                    <div class="inst">
+                      <label for="">Instrumento</label>
+                      <div class="selection">
+                        <!-- Lista de opciones -->
+                        <select id="instrument">
+                          <!-- Opciones de la lista -->
+                          <option value="1" selected>Bitcoin</option> <!-- Opción por defecto -->
+                          <option value="2">Ethereum</option> 
+                          <option value="3">Apple</option>
+                          <option value="4">Microsoft</option>
+                        </select>
+                      </div>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="inst">
+                      <label for="qty">Cantidad</label>
+                      <input type="number" id="qty">
+                    </div>
+                  </li>
+                  <li>
+                    <div class="inst">
+                      <label for="price">Precio</label>
+                      <input type="number" id="price">
+                    </div>
+                  </li>
+                </ul>
+                <button type="submit" id="bConfirm" class="confirmBtn">
+                  Confirmar
+                </button>
+              </form>
             </div>
           </div>
         </div>
-        <div class="container historial">
-          <div>
-            <h2>
-              Historial
-            </h2>
-          </div>
-        </div>
-        <div class="buttons">
-          <button class="comprar">Comprar</button>
-          <button class="vender">vender</button>
-        </div>
+        <!-- Fin modal de compra -->
       </section>
     </main>
     

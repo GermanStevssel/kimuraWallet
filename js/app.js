@@ -33,24 +33,13 @@ const createUser = () => {
 	user = new Client(dni, name, lastName, balance);
 
   showUser(user)
+  showBalance(user)
 };
 // Función para encontrar el instrumento que seleccionó el usuario
 function findInstrument(instIndex) {
   instSelected = INST_CATALOGUE.find(element => element.id == instIndex);
   
   return instSelected;
-}
-// Función flecha para seleccionar la cantidad de unidades a comprar
-const setQuantity= (instrument) => {
-  // Solicito al usuario la cantidad de unidades que desea comprar
-  qty = parseInt(prompt(`¿Cuántas unidades de ${instrument.ticker} quieres comprar?`))
-  // Validación del valor ingresado en qty, debe ser un valor númerico
-  while (isNaN(qty)) {
-    alert("Ha ingresado un valor inválido");
-    qty = parseInt(prompt("Ingrese las unidades que desea comprar"));
-  }
-
-  return qty;
 }
 /* Función para generar un objeto de la clase Operations y guardarla en el array wallet
 del usuario*/
@@ -60,42 +49,51 @@ function operation(instrument, qty, price, value, user) {
 
   user.updateWallet(add)
 }
-// Función para realizar la compra del instrumento seleccionado
-function buy(user) { //Solicita el instrumento que desea comprar
-	let userSelection = prompt(`¿Qué desea comprar?\n
-                          1-BTC | 2-ETH | 3-AAPL | 4-MSFT\n
-                          Indique con el número identificador`);
-  // Validación del valor ingresado
-  while (userSelection > INST_CATALOGUE.length || userSelection <= 0) {
-    alert("El número ingresado no corresponde a ningúna opción");
-    userSelection = prompt(`¿Qué desea comprar?\n
-                          1-BTC | 2-ETH | 3-AAPL | 4-MSFT\n
-                          Indique con el número identificador`);
-  }
-  /*Invocar la función findInstrument() para asignar el objeto del instrumento 
-  a comprar a la variable instSelected*/
-  instSelected = findInstrument(userSelection);
-  
-  qty = setQuantity(instSelected)
 
-  let balance = user.balance; //
-  let price = instSelected.price
-  let value = qty * price;
+function validateForm() {
+  qty = document.getElementById('qty').value
 
-
-  if (balance >= value) { 
-    if (qty == 1) {
-      alert(`Felicitaciones, has comprado ${qty} unidad de ${instSelected.ticker}`)
-      user.updateBalance(value)
-      operation(instSelected, qty, price, value, user)
-    } else {
-      alert(`Felicitaciones, has comprado ${qty} unidades de ${instSelected.ticker}`)
-      user.updateBalance(value)
-      operation(instSelected, qty, price, value, user)
-    }
+  if (qty === '' || isNaN(qty)) {
+    alert(`Ha ingresado una cantidad invalida`);
+    continueBuying = false;
+    document.getElementById('qty').value = '';
   } else {
-    alert(`Saldo insuficiente`)
+    continueBuying = true;
   }
+}
+// Función para realizar la compra del instrumento seleccionado
+function buy(e) {
+  e.preventDefault()
+  validateForm()
+
+  if (continueBuying) {
+    let userSelection = document.getElementById('instrument').value
+    /*Invocar la función findInstrument() para asignar el objeto del instrumento 
+    a comprar a la variable instSelected*/
+    instSelected = findInstrument(userSelection)
+    qty = document.getElementById('qty').value
+    let price = instSelected.price
+    let balance = user.balance
+    let value = qty * price
+
+    if (balance >= value) { 
+      if (qty == 1) {
+        alert(`Felicitaciones, has comprado ${qty} unidad de ${instSelected.ticker}`)
+        user.updateBalance(value)
+        operation(instSelected, qty, price, value, user)
+      } else {
+        alert(`Felicitaciones, has comprado ${qty} unidades de ${instSelected.ticker}`)
+        user.updateBalance(value)
+        operation(instSelected, qty, price, value, user)
+      }
+
+      showInstruments(user)
+      showBalance(user)
+    } else {
+      alert(`Saldo insuficiente`)
+    }
+  }
+  document.getElementById('qty').value = '';
 }
 // Función flecha para mostrar el historial de transacciones
 const abstract = (record) => { // Consulta si desea visualizar
@@ -121,23 +119,7 @@ function main() { // Solicita al usuario si desea abrir una cuenta
           ¿Desea crear una cuenta?`);
   // En caso de aceptar, continua el código con las siguientes funciones
 	if (abrirCuenta) {
-    let keepBuying = true; // Variable auxiliar para controlar el ciclo while
 		createUser(); // Invocación de la función para generar un nuevo usuario
-    let balance = user.balance; // Asignación a variable balance, el saldo del usuario
-    // Ciclo while para generar varias instancias de compras
-    while (keepBuying) {
-      buy(user) // Invocación de la función de comprar instrumentos financieros
-      // Control de flujo de código en función del saldo del usuario
-      if (balance > 0) {
-        keepBuying = confirm(`Su saldo es de ${user.balance}
-        ¿Desea continuar comprando?`)
-      } else {
-        alert("Su saldo es de $0")
-        keepBuying = false;
-      }
-    }
-    // Invocación de función abstract, para mostrar el historial de transacciones
-    abstract(user.wallet)
 	} else { // En caso de no desear abrir una cuenta, se ejecuta este mensaje
 		alert("Puede abrir su cuenta en el momento que usted quiera.");
 	}
@@ -145,7 +127,13 @@ function main() { // Solicita al usuario si desea abrir una cuenta
 // Invocación de función principal para que se ejecute todo el código
 main();
 
-showBalance(user)
+let bBtn = document.getElementById('buyBtn')
+let modalOverlay = document.getElementById('modal')
+let btnConfirm = document.getElementById('bConfirm')
+
+btnConfirm.addEventListener('click', buy)
+bBtn.addEventListener('click', showModal)
+modalOverlay.addEventListener('click', hideModal)
 
 console.log(user);
 console.log(user.balance)

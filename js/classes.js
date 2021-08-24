@@ -32,7 +32,7 @@ class Instrument {
 }
 // Clase para crear instancias de operaciones
 class Operations {
-  constructor(date,instrument, qty, price, value) {
+  constructor(date, instrument, qty, price, value) {
     this.date = date;
     this.ticker = instrument.ticker;
     this.name = instrument.name;
