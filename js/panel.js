@@ -1,8 +1,10 @@
 function deposit(e) {
   e.preventDefault()
 
-  let money = $('#money').val()
+  let money = parseInt($('#money').val())
   user.balance = money
+
+  console.log(typeof money)
   
   showBalance(user)
 }
