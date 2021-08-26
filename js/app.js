@@ -113,28 +113,3 @@ const abstract = (record) => { // Consulta si desea visualizar
     alert(`Puede continuar realizando distintas operaciones desde su cuenta.`)
   }
 }
-// Función principal que ejecutara el programa
-function main() { // Solicita al usuario si desea abrir una cuenta
-	let abrirCuenta = confirm(`Bienvenido a Kimura. \n
-          ¿Desea crear una cuenta?`);
-  // En caso de aceptar, continua el código con las siguientes funciones
-	if (abrirCuenta) {
-		createUser(); // Invocación de la función para generar un nuevo usuario
-	} else { // En caso de no desear abrir una cuenta, se ejecuta este mensaje
-		alert("Puede abrir su cuenta en el momento que usted quiera.");
-	}
-}
-// Invocación de función principal para que se ejecute todo el código
-main();
-
-let bBtn = document.getElementById('buyBtn')
-let modalOverlay = document.getElementById('modal')
-let btnConfirm = document.getElementById('bConfirm')
-
-btnConfirm.addEventListener('click', buy)
-bBtn.addEventListener('click', showModal)
-modalOverlay.addEventListener('click', hideModal)
-
-console.log(user);
-console.log(user.balance)
-console.log(user.wallet)

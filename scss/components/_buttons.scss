@@ -1,11 +1,11 @@
-.pre-header {
+.preHeader {
   .session {
     a {
       color: $white;
       text-decoration: none;
     }
     
-    .create-user {
+    .signIn {
       background: linear-gradient(to right, $blue1, $blue0);
       padding: 0.4rem 0.5rem;
       border-radius: 10px;
@@ -14,7 +14,8 @@
   }
 }
 
-.depositBtn {
+.depositBtn,
+.nxtBtn {
   color: $white;
   font-size: 0.8rem;
   font-weight: 700;

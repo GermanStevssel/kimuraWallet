@@ -40,16 +40,20 @@ function showBalance(user) {
   }
 }
 
-function showModal() {
-  let modal = document.getElementById('modal')
+function showModal(el) {
+  let modal = document.querySelector(el)
   modal.classList.add('show')
 }
 
 function hideModal(e) {
-  let modal = document.getElementById('modal')
+  let modal = document.querySelector('.overlay')
+  let dModal = document.querySelector('.dOverlay')
+  let bModal = document.querySelector('.bOverlay')
 
-  if (e.target === modal) {  
-    modal.classList.remove('show')
+  if (e.target === modal ||
+      e.target === dModal ||
+      e.target === bModal) {  
+    e.target.classList.remove('show')
   }
 }
 

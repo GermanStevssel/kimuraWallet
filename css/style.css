@@ -7,18 +7,111 @@
   scroll-behavior: smooth;
 }
 
-.pre-header .session a {
+.overlay,
+.dOverlay,
+.bOverlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.3);
+  width: 100%;
+  height: 100vh;
+}
+.overlay::before,
+.dOverlay::before,
+.bOverlay::before {
+  content: "X";
+  color: #FAFAFA;
+  font-size: 1.5em;
+  cursor: pointer;
+  position: absolute;
+  right: 2rem;
+  top: 1rem;
+  opacity: 0.9;
+}
+.overlay .modal,
+.dOverlay .modal,
+.bOverlay .modal {
+  /* visibility: hidden; */
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.06);
+  width: 45%;
+  min-width: 200px;
+  height: fit-content;
+  padding: 3rem 2rem;
+  right: 0;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+}
+.overlay .modal h2,
+.dOverlay .modal h2,
+.bOverlay .modal h2 {
+  font-size: 1.5rem;
+  text-align: center;
+}
+.overlay .modal .modal__content,
+.dOverlay .modal .modal__content,
+.bOverlay .modal .modal__content {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+.overlay .modal .modal__content .form,
+.dOverlay .modal .modal__content .form,
+.bOverlay .modal .modal__content .form {
+  display: flex;
+  flex-direction: column;
+  width: 45%;
+}
+.overlay .modal .modal__content .form ul,
+.dOverlay .modal .modal__content .form ul,
+.bOverlay .modal .modal__content .form ul {
+  padding: 0;
+}
+.overlay .modal .modal__content .form ul li,
+.dOverlay .modal .modal__content .form ul li,
+.bOverlay .modal .modal__content .form ul li {
+  list-style: none;
+}
+.overlay .modal .modal__content .form ul li .inst,
+.dOverlay .modal .modal__content .form ul li .inst,
+.bOverlay .modal .modal__content .form ul li .inst {
+  display: flex;
+  justify-content: space-between;
+  margin: 1rem;
+}
+.overlay .modal .modal__content .form ul li .inst .selection,
+.dOverlay .modal .modal__content .form ul li .inst .selection,
+.bOverlay .modal .modal__content .form ul li .inst .selection {
+  position: relative;
+  z-index: 300;
+}
+.overlay .modal .modal__content .form ul li .inst input,
+.dOverlay .modal .modal__content .form ul li .inst input,
+.bOverlay .modal .modal__content .form ul li .inst input {
+  width: 92px;
+}
+
+.preHeader .session a {
   color: #FFFFFF;
   text-decoration: none;
 }
-.pre-header .session .create-user {
+.preHeader .session .signIn {
   background: linear-gradient(to right, #3454db, #0c107c);
   padding: 0.4rem 0.5rem;
   border-radius: 10px;
   border: none;
 }
 
-.depositBtn {
+.depositBtn,
+.nxtBtn {
   color: #FFFFFF;
   font-size: 0.8rem;
   font-weight: 700;
@@ -29,7 +122,8 @@
   border: 2px solid #0c107c;
   margin: 0 auto;
 }
-.depositBtn:hover {
+.depositBtn:hover,
+.nxtBtn:hover {
   background-color: #3454db;
   border: 2px solid #3454db;
 }
@@ -88,7 +182,7 @@
 }
 
 /* View Home */
-.pre-header {
+.preHeader {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -96,19 +190,19 @@
   height: 1vh;
   margin: 1.5rem auto;
 }
-.pre-header .logo {
+.preHeader .logo {
   height: 40px;
   width: auto;
 }
-.pre-header .session {
+.preHeader .session {
   display: flex;
   align-items: center;
 }
-.pre-header .session a {
+.preHeader .session a {
   color: #0c107c;
   padding-right: 1rem;
 }
-.pre-header .session a:nth-child(3) {
+.preHeader .session a:nth-child(3) {
   color: #FFFFFF;
 }
 
@@ -162,6 +256,11 @@
 }
 .features h3 {
   color: #77DD77;
+}
+
+.form {
+  display: flex;
+  justify-content: center;
 }
 
 .navbar {
@@ -230,76 +329,6 @@
   align-self: center;
   margin: 0 auto;
   opacity: 0.7;
-}
-
-.overlay {
-  display: none;
-  position: fixed;
-  top: 0;
-  left: 0;
-  background-color: rgba(0, 0, 0, 0.3);
-  width: 100%;
-  height: 100vh;
-}
-.overlay::before {
-  content: "X";
-  color: #FAFAFA;
-  font-size: 1.5em;
-  cursor: pointer;
-  position: absolute;
-  right: 2rem;
-  top: 1rem;
-  opacity: 0.9;
-}
-.overlay .buyModal {
-  /* visibility: hidden; */
-  display: flex;
-  flex-direction: column;
-  background-color: white;
-  border-radius: 10px;
-  box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.06);
-  width: 45%;
-  min-width: 200px;
-  height: fit-content;
-  padding: 3rem 2rem;
-  right: 0;
-  left: 0;
-  top: 0;
-  bottom: 0;
-  margin: auto;
-}
-.overlay .buyModal h2 {
-  font-size: 1.5rem;
-  text-align: center;
-}
-.overlay .buyModal .buyModal__Content {
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  align-items: center;
-}
-.overlay .buyModal .buyModal__Content .form {
-  display: flex;
-  flex-direction: column;
-  width: 45%;
-}
-.overlay .buyModal .buyModal__Content .form ul {
-  padding: 0;
-}
-.overlay .buyModal .buyModal__Content .form ul li {
-  list-style: none;
-}
-.overlay .buyModal .buyModal__Content .form ul li .inst {
-  display: flex;
-  justify-content: space-between;
-  margin: 1rem;
-}
-.overlay .buyModal .buyModal__Content .form ul li .inst .selection {
-  position: relative;
-  z-index: 300;
-}
-.overlay .buyModal .buyModal__Content .form ul li .inst input {
-  width: 92px;
 }
 
 .show {

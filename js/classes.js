@@ -1,9 +1,10 @@
 // Clase para crear instancias de clientes
 class Client {
-	constructor(dni, name, lastName, balance) {
+	constructor(dni, name, lastName, email, balance) {
 		this.dni = dni;
 		this.name = name;
 		this.lastName = lastName;
+    this.email = email;
 		this.balance = balance;
     this.wallet = [];
 	}

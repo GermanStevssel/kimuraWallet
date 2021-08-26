@@ -66,10 +66,33 @@
         </section>
         <!-- Fin Sección Historial-->
 
+        <!-- Modal de depósito -->
+        <div id="modal" class="dOverlay">
+          <div class="modal">
+            <div class="modal__content">
+              <h2>Ingrese el monto de depósito</h2>
+              <form id="dform" class="form">
+                <ul>
+                  <li>
+                    <div class="inst">
+                      <label for="money">Cantidad</label>
+                      <input type="number" id="money">
+                    </div>
+                  </li>
+                </ul>
+                <button type="submit" id="dConfirm" class="depositBtn">
+                  Depositar
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+        <!-- Fin modal de depósito -->
+
         <!-- Modal de compra -->
-        <div id="modal" class="bModal__overlay">
-          <div class="buyModal">
-            <div class="buyModal__Content">
+        <div id="modal" class="bOverlay">
+          <div class="modal">
+            <div class="modal__content">
               <h2>Seleccione el instrumento que desea comprar</h2>
               <form id="bform" class="form">
                 <ul>
@@ -112,9 +135,11 @@
       </section>
     </main>
     
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>|
     <script src="js/classes.js"></script>
     <script src="js/views.js"></script>
     <script src="js/app.js"></script>
+    <script src="js/panel.js"></script>
     
     <!-- Optional JavaScript; choose one of the two! -->
 

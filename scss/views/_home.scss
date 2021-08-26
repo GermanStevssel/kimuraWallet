@@ -1,5 +1,5 @@
 /* View Home */
-.pre-header {
+.preHeader {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -86,4 +86,9 @@
   h3 {
     color: $green1;
   }
+}
+
+.form {
+  display: flex;
+  justify-content: center;
 }

@@ -13,14 +13,14 @@
 </head>
 <body>
   <header>
-    <section class="pre-header">
+    <section class="preHeader">
       <img src="img/logo/logo.webp" alt="Logo de Kimura" class="logo">
       <div class="session">
         <i class="icon-person"></i>
         <a href="login.html">
           Iniciar Sesión
         </a>
-        <a href="panel.html" class="create-user">Abrir Cuenta</a>
+        <a role="button" id="signInBtn" class="signIn">Abrir Cuenta</a>
       </div>
     </section>
     <nav class="navbar navbar-expand-lg">
@@ -109,7 +109,71 @@
     </div>
   </section>
   <!-- Fin features -->
-  </section>
+  <!-- Modal de Sign up -->
+  <div id="sInWin" class="overlay">
+    <div class="modal">
+      <div class="modal__content">
+        <h2><span class="titlesin">Kimura</span> - Apertura de cuenta</h2>
+        <form id="signUpForm" action="/panel.html">
+          <div class="form-row">
+            <div class="form-floating mb-3">
+              <input 
+                type="text" 
+                id="name" 
+                class="form-control"
+                name="Nombre" 
+                placeholder="Escribe tu nombre"
+                required
+              >
+              <label for="name">Nombre</label>
+            </div>
+            <div class="form-floating mb-3">
+              <input 
+                type="text" 
+                id="lastName" 
+                class="form-control"
+                name="Apellido" 
+                placeholder="Escribe tu Apellido"
+                required
+              >
+              <label for="name">Apellido</label>
+            </div>
+            <div class="form-floating mb-3">
+              <input 
+                type="number" 
+                id="dni" 
+                class="form-control"
+                name="Documento" 
+                placeholder="Ingresa tu DNI"
+                required
+              >
+              <label for="name">DNI</label>
+            </div>
+            <div class="form-floating mb-3">
+              <input 
+                type="email" 
+                id="email"
+                class="form-control"
+                name="Email"
+                placeholder="miemail@mail.com"
+                required
+              >
+              <label for="email">Email</label>
+            </div>
+          <button type="submit" id="sInNext" class="nxtBtn">
+            Continuar
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+  <!-- Fin modal de compra -->
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+  <script src="js/classes.js"></script>
+  <script src="js/views.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/index.js"></script>
   
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 </body>
