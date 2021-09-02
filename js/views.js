@@ -14,7 +14,7 @@ function removeChilds(element) {
 
 function showBalance(user) {
   let value = 0
-  // iterar por todos los objetos dentro de wallete y sumar los montos de compra
+  // iterar por todos los objetos dentro de wallet y sumar los montos de compra
   for (let i = 0; i < user.wallet.length; i++) {
     value += user.wallet[i].value
     console.log(user.wallet[i].value)

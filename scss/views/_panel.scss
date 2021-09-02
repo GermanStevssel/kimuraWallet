@@ -34,23 +34,47 @@
     .disponibilidades {
       display: flex;
       justify-content: space-between;
-      flex-direction: column;
       line-height: 0.5;
       background-color: $white;
       padding: 1rem 1rem 0 1rem;
       border-radius: 10px;
       box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.06);
 
-      .balance-items {
-        margin-bottom: 1rem;
+      p {
+        font-size: 1rem;
       }
 
-      // .saldos {
-      //   display: flex;
-      // }
+      .balanceItems,
+      .amounts {
+        display: flex;
+        flex-direction: column;
+
+        .items {
+          display: flex;
+          flex: 1;
+          padding: 0 .5rem;
+          text-align: center;
+          align-items: center;
+          min-width: 60px;
+        }
+
+        .values {
+          display: flex;
+          flex: 1;
+          padding-right: 0.5rem;
+          justify-content: flex-end;
+          align-items: baseline;
+          min-width: 60px;
+
+          &::before {
+            content: "$";
+           
+          }
+        }
+      }
     }
 
-    .display-conts {
+    .displayConts {
       display: flex;
       background-color: $white;
       box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.06);

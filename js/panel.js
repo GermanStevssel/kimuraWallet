@@ -1,11 +1,10 @@
+// Función para depositar fondos en la cuenta
 function deposit(e) {
   e.preventDefault()
 
   let money = parseInt($('#money').val())
   user.balance = money
-
-  console.log(typeof money)
-  
+  // Mostrar en pantalla el saldo del usuario   
   showBalance(user)
 }
 
@@ -30,6 +29,7 @@ $('#deposit').click(() => {
 $('#dConfirm').click(deposit)
 confirmBtn.addEventListener('click', buy)
 bBtn.addEventListener('click', () => {
-  showModal('.bOverlay')})
+  showModal('.bOverlay')
+})
 dOverlay.addEventListener('click', hideModal)
 bOverlay.addEventListener('click', hideModal)
