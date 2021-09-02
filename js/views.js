@@ -5,10 +5,11 @@ function showUser(user) {
 }
 
 function removeChilds(element) {
-  if (element.hasChildNodes()) {
-    while (element.childNodes.length >= 1) {
-      element.removeChild(element.firstChild)
-    }
+  if (element.is(':parent')) {
+    // while (element.childNodes.length >= 1) {
+    //   element.removeChild(element.firstChild)
+    // }
+    element.empty()
   }
 }
 
@@ -21,22 +22,17 @@ function showBalance(user) {
   }
 
   let total = value + user.balance
-  let i = 0
-  const balance = [total, value, user.balance]
-
-  let disponibilidades = document.getElementsByClassName("disponibilidades")
-  let dispo = document.getElementById('dispo')
-  let definitions = ["Total:", "Instrumentos:", "Disponible:"]
+  const BALANCE = [total, value, user.balance]
+  // let amounts = document.getElementById('amounts')
+  let amounts = $('#amount')  
   // Si ya se genero el balance, elimino y vuelvo a generar los elementos con la info actualizada
-  removeChilds(dispo)
+  removeChilds(amounts)
   // Genero el tablero con los datos del balance
-  for (const item of balance) {
-    let contenedor = document.createElement("div")
-    contenedor.className = "balance-items"
-    let text = document.createTextNode(`${definitions[i]} $${item}`)
-    contenedor.appendChild(text)
-    disponibilidades[0].appendChild(contenedor)
-    i++
+  for (const item of BALANCE) {
+    let div = $("<div>")
+    div.addClass("values")
+    div.html(`<p>${item}</p>`)
+    $(".amounts").append(div)
   }
 }
 
@@ -58,12 +54,30 @@ function hideModal(e) {
 }
 
 function showInstruments(user) {
-  let instruments = document.getElementById('instruments')
+  let instruments = $('#instruments')
   let wallet = user.wallet
   
   removeChilds(instruments)
 
+  let header = $("<div>")
+  header.addClass("header")
+  header.html(`<div class="instCol"><p>Nombre</p></div>
+    <div class="instCol"><p>Ticker</p></div>
+    <div class="instCol"><p>Cantidad</p></div>
+    <div class="instCol"><p>Precio</p></div>
+    <div class="instCol"><p>Valor</p></div>`
+  )
+  instruments.append(header)
+
   wallet.forEach(element => {
-    instruments.innerHTML += `Tiene ${element.qty} unidades de ${element.name} por un valor de $${element.value}<br/>`
+    let div = $("<div>")
+    div.addClass("instRow")
+    div.html(`<div class="instCol"><p>${element.name}</p></div>
+      <div class="instCol"><p>${element.ticker}</p></div>
+      <div class="instCol"><p>${element.qty}</p></div>
+      <div class="instCol"><p>${element.price}</p></div>
+      <div class="instCol"><p>${element.value}</p></div>`
+    )
+    instruments.append(div)
   });
 }

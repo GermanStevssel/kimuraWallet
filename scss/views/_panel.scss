@@ -76,6 +76,7 @@
 
     .displayConts {
       display: flex;
+      flex-direction: column;
       background-color: $white;
       box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.06);
       border-radius: 10px;
@@ -86,10 +87,25 @@
       margin-top: 1rem;
 
       p {
-        text-align: center;
-        align-self: center;
-        margin: 0 auto;
+        margin: auto;
         opacity: 0.7;
+      }
+
+      .header {
+        display: flex;
+      }
+
+      .instRow {
+        display: flex;
+      } 
+
+      .instCol {
+        display: flex;
+        flex: 1;
+        border-right: 1px solid $gray2;
+        border-bottom: 1px solid $gray2;
+        justify-content: center;
+        align-items: center;
       }
     }
   }

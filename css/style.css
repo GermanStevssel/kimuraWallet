@@ -341,6 +341,7 @@
 }
 .main .page-container .displayConts {
   display: flex;
+  flex-direction: column;
   background-color: #FFFFFF;
   box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.06);
   border-radius: 10px;
@@ -351,10 +352,22 @@
   margin-top: 1rem;
 }
 .main .page-container .displayConts p {
-  text-align: center;
-  align-self: center;
-  margin: 0 auto;
+  margin: auto;
   opacity: 0.7;
+}
+.main .page-container .displayConts .header {
+  display: flex;
+}
+.main .page-container .displayConts .instRow {
+  display: flex;
+}
+.main .page-container .displayConts .instCol {
+  display: flex;
+  flex: 1;
+  border-right: 1px solid #eff3f6;
+  border-bottom: 1px solid #eff3f6;
+  justify-content: center;
+  align-items: center;
 }
 
 .show {

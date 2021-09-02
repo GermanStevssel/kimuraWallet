@@ -71,7 +71,7 @@ function buy(e) {
     /*Invocar la función findInstrument() para asignar el objeto del instrumento 
     a comprar a la variable instSelected*/
     instSelected = findInstrument(userSelection)
-    qty = document.getElementById('qty').value
+    qty = parseInt(document.getElementById('qty').value)
     let price = instSelected.price
     let balance = user.balance
     let value = qty * price

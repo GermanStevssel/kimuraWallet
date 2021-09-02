@@ -14,7 +14,26 @@ class Client {
 	}
   //Método para actualizar las tenencias del cliente en su billetera
   updateWallet(operation) {
-    this.wallet.push(operation);
+
+    let ticker = operation.ticker
+    let index = -1
+
+    this.wallet.forEach(element => { 
+      if(element.ticker == ticker) {
+        index = this.wallet.indexOf(element)
+      }
+    })
+
+    if( index !== -1) {
+      let qty = operation.qty
+      let value = operation.value
+
+      this.wallet[index].qty += qty
+      this.wallet[index].value += value
+
+    } else {
+      this.wallet.push(operation);
+    }  
   }
 
   nameDisplayed() {
