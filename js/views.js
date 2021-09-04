@@ -6,6 +6,7 @@ function showUser(user) {
 
 function removeChilds(element) {
   if (element.is(':parent')) {
+    // Otra alternativa, recorriendo de a un Child con condicional y metodo .hasChildNodes()
     // while (element.childNodes.length >= 1) {
     //   element.removeChild(element.firstChild)
     // }
