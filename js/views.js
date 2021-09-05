@@ -89,5 +89,4 @@ $('.navToggleBtn').click(function () {
   $('.pageContainer').toggleClass('pageContWidth');
   $('.navToggleBtn').toggleClass('rotate')
   $('.navTitle').toggle()
-  console.log($(".sideBar"))
 });
