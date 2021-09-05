@@ -1,10 +1,10 @@
 @font-face {
   font-family: 'icomoon';
-  src:  url('fonts/icomoon.eot?jgtb7a');
-  src:  url('fonts/icomoon.eot?jgtb7a#iefix') format('embedded-opentype'),
-    url('fonts/icomoon.ttf?jgtb7a') format('truetype'),
-    url('fonts/icomoon.woff?jgtb7a') format('woff'),
-    url('fonts/icomoon.svg?jgtb7a#icomoon') format('svg');
+  src:  url('fonts/icomoon.eot?mex73r');
+  src:  url('fonts/icomoon.eot?mex73r#iefix') format('embedded-opentype'),
+    url('fonts/icomoon.ttf?mex73r') format('truetype'),
+    url('fonts/icomoon.woff?mex73r') format('woff'),
+    url('fonts/icomoon.svg?mex73r#icomoon') format('svg');
   font-weight: normal;
   font-style: normal;
   font-display: block;
@@ -25,8 +25,25 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.icon-priceTags:before {
+  content: "\e901";
+  color: white;
+  font-weight: 600;
+}
+.icon-wallet:before {
+  content: "\e902";
+  color: white;
+  font-weight: 600;
+}
 .icon-money:before {
   content: "\e900";
+}
+.icon-arrow:before {
+  content: "\e90a";
+}
+.icon-arrow:hover {
+  content: "\e90a";
+  color: #77DD77;
 }
 .icon-mail:before {
   content: "\e903";
@@ -48,4 +65,9 @@
 }
 .icon-balance:before {
   content: "\e909";
+}
+.icon-logout:before {
+  content: "\e906";
+  color: white;
+  font-size: 1.5rem;
 }

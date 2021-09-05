@@ -82,3 +82,12 @@ function showInstruments(user) {
     instruments.append(div)
   });
 }
+
+// Animación para mostrar sidebar
+$('.navToggleBtn').click(function () {
+	$('.nav').toggleClass("mostrar");
+  $('.pageContainer').toggleClass('pageContWidth');
+  $('.navToggleBtn').toggleClass('rotate')
+  $('.navTitle').toggle()
+  console.log($(".sideBar"))
+});

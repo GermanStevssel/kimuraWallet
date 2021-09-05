@@ -14,12 +14,33 @@
   </head>
   <body>
     <main class="main">
-      <section class="sidebar">
-        <div class="header-container"></div>
-        <nav class="categorias"></nav>
-        <div class="button-container"></div>
+      <section class="nav">
+        <div class="headerContainer"></div>
+        <nav class="navCategories">
+          <div class="navIcons">
+            <a href="#">
+              <i class="icon-wallet"></i>
+              <span class="navTitle">Billetera</span>
+            </a>
+          </div>
+          <div class="navIcons">
+            <a href="#">
+              <i class="icon-priceTags"></i>
+              <span class="navTitle">Cotizaciones</span>
+            </a>
+          </div>
+          <div class="navIcons">
+            <a href="#">
+              <i class="icon-logout"></i>
+              <span class="navTitle">Salir</span>
+            </a>
+          </div>
+        </nav>
+        <button type="button" class="navButton navToggleBtn">
+          <i class="icon-arrow"></i>
+        </button>
       </section>
-      <section class="page-container">
+      <section class="pageContainer">
         <div class="container mt-2 d-flex justify-content-end">
           <div class="d-flex flex-column justify-content-center me-4">
             <h1 id="user">
@@ -157,7 +178,7 @@
       </section>
     </main>
     
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>|
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <script src="js/classes.js"></script>
     <script src="js/views.js"></script>
     <script src="js/app.js"></script>
