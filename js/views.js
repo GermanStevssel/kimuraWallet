@@ -1,7 +1,7 @@
 // Función para mostrar el nombre del usuario en el html
 function showUser(user) {
-  let userHTML = document.getElementById("user")
-  userHTML.innerHTML = `${user.nameDisplayed()} Wallet`;
+  let userHTML = $('#user')
+  userHTML.html(`${user.nameDisplayed()} Wallet`);
 }
 
 function removeChilds(element) {
@@ -38,18 +38,20 @@ function showBalance(user) {
 }
 
 function showModal(el) {
-  let modal = document.querySelector(el)
-  modal.classList.add('show')
+  let modal = $(el)
+  modal.addClass('show')
 }
 
 function hideModal(e) {
-  let modal = document.querySelector('.overlay')
-  let dModal = document.querySelector('.dOverlay')
-  let bModal = document.querySelector('.bOverlay')
+  let modal = $('.overlay')[0] // Accedo al primer elemento del objeto generado por JQuery
+  let dModal = $('.dOverlay')[0]
+  let bModal = $('.bOverlay')[0]
+  let sModal = $('.sOverlay')[0]
 
   if (e.target === modal ||
       e.target === dModal ||
-      e.target === bModal) {  
+      e.target === bModal ||
+      e.target === sModal) {  
     e.target.classList.remove('show')
   }
 }
@@ -90,3 +92,20 @@ $('.navToggleBtn').click(function () {
   $('.navToggleBtn').toggleClass('rotate')
   $('.navTitle').toggle()
 });
+
+// Cargar el precio del producto seleccionado
+$('#bInstrument').change(() => {
+  let URLJSON = 'data/instruments.json'
+  let selection = $('#bInstrument').val()
+  console.log(selection)
+
+  $.getJSON(URLJSON, function (respuesta, estado) {
+    if(estado === "success"){
+      let misDatos = respuesta;    
+      let instrument = misDatos.find(element => element.id == selection)
+      console.log(instrument)
+      let price = instrument.price
+      $('#price').val(price)   
+    }
+  });
+})

@@ -2,42 +2,27 @@
 let user;
 let instSelected;
 let qty = 0;
-// Array que contendra las ofertas de instrumentos financieros
-const INST_CATALOGUE = []
-//Generando instancias de Instrument
-const BTC = new Instrument(1, "Cryptocurrency", "Bitcoin", "BTC", 43215);
-const ETH = new Instrument(2, "Cryptocurrency", "Ethereum", "ETH", 2200);
-const AAPL = new Instrument(3, "Stock", "Apple", "AAPL", 146.14);
-const MSFT = new Instrument(4, "Stock", "Microsoft", "MSFT", 289.46);
-// Pusheando los objetos al array de catalogo de instrumentos financieros
-INST_CATALOGUE.push(BTC, ETH, AAPL, MSFT)
-console.log(INST_CATALOGUE)
-// Función flecha para crear un nuevo usuario
-const createUser = () => {
-	let name = prompt("Ingrese su nombre");
-	let lastName = prompt("Ingrese su apellido");
-	let dni = parseInt(prompt("Ingrese su DNI"));
+// Función para depositar fondos en la cuenta
+function deposit(e) {
+  e.preventDefault()
 
-	while (isNaN(dni)) {
-		alert("Ha ingresado un valor invalido");
-		dni = parseInt(prompt("Ingrese su DNI"));
-	}
-
-	let balance = parseFloat(prompt("Ingrese el depósito de dinero"));
-
-	while (isNaN(balance)) {
-		alert("Ha ingresado un valor inválido");
-		balance = parseFloat(prompt("Ingrese el depósito de dinero"));
-	}
-
-	user = new Client(dni, name, lastName, balance);
-
-  showUser(user)
+  let money = parseInt($('#money').val())
+  user.balance = money
+  $('#money').val('')
+  // Mostrar en pantalla el saldo del usuario   
   showBalance(user)
-};
+}
 // Función para encontrar el instrumento que seleccionó el usuario
 function findInstrument(instIndex) {
-  instSelected = INST_CATALOGUE.find(element => element.id == instIndex);
+  let URLJSON = 'data/instruments.json'
+
+  $.getJSON(URLJSON, function (respuesta, estado) {
+    if(estado === "success"){
+      let misDatos = respuesta;
+
+      instSelected = misDatos.find(element => element.id == instIndex)   
+    }
+  });
   
   return instSelected;
 }
@@ -51,12 +36,12 @@ function operation(instrument, qty, price, value, user) {
 }
 
 function validateForm() {
-  qty = document.getElementById('qty').value
+  qty = $('#qty').val()
 
-  if (qty === '' || isNaN(qty)) {
+  if (qty === '' || isNaN(qty) || qty <= 0) {
     alert(`Ha ingresado una cantidad invalida`);
     continueBuying = false;
-    document.getElementById('qty').value = '';
+    $('#qty').val('') ;
   } else {
     continueBuying = true;
   }
@@ -66,13 +51,9 @@ function buy(e) {
   e.preventDefault()
   validateForm()
 
-  if (continueBuying) {
-    let userSelection = document.getElementById('instrument').value
-    /*Invocar la función findInstrument() para asignar el objeto del instrumento 
-    a comprar a la variable instSelected*/
-    instSelected = findInstrument(userSelection)
-    qty = parseInt(document.getElementById('qty').value)
-    let price = instSelected.price
+  if (continueBuying) { 
+    qty = parseInt($('#qty').val())
+    let price = $('#price').val()
     let balance = user.balance
     let value = qty * price
 
@@ -93,7 +74,7 @@ function buy(e) {
       alert(`Saldo insuficiente`)
     }
   }
-  document.getElementById('qty').value = '';
+  $('#qty').val('');
 }
 // Función flecha para mostrar el historial de transacciones
 const abstract = (record) => { // Consulta si desea visualizar

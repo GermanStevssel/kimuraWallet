@@ -1,17 +1,9 @@
-// Función para depositar fondos en la cuenta
-function deposit(e) {
-  e.preventDefault()
-
-  let money = parseInt($('#money').val())
-  user.balance = money
-  // Mostrar en pantalla el saldo del usuario   
-  showBalance(user)
-}
-
-let bBtn = document.getElementById('buyBtn')
-let dOverlay = document.querySelector('.dOverlay')
-let bOverlay = document.querySelector('.bOverlay')
-let confirmBtn = document.getElementById('bConfirm')
+let bBtn = $('#buyBtn')
+let sBtn = $('#sellBtn')
+let dOverlay = $('.dOverlay')
+let bOverlay = $('.bOverlay')
+let sOverlay = $('.sOverlay')
+let confirmBtn = $('#bConfirm')
 
 let logUser = JSON.parse(localStorage.getItem('user'))
 let dni = logUser.dni
@@ -26,10 +18,51 @@ showUser(user)
 $('#deposit').click(() => {
   showModal('.dOverlay')
 })
+
 $('#dConfirm').click(deposit)
-confirmBtn.addEventListener('click', buy)
-bBtn.addEventListener('click', () => {
+
+confirmBtn.on('click', buy)
+//Al clickear el boton de comprar, toma los instrumentos del json y los da cómo opción
+bBtn.on('click', () => {
+  $('#bInstrument').empty()  
+  let URLJSON = 'data/instruments.json'
+  $('#bInstrument').append(`<!-- Opciones de la lista -->
+  <option value="0"></option> <!-- Opción por defecto -->`)
+
+  $.getJSON(URLJSON, function (respuesta, estado) {
+    if(estado === "success"){
+      let misDatos = respuesta;
+
+      for (const dato of misDatos) {
+        $('#bInstrument').append(
+          `<option value="${dato.id}">${dato.name}</option>`
+        )
+      }  
+    }
+  });
+
   showModal('.bOverlay')
+});
+
+sBtn.on('click', () => {
+  showModal('.sOverlay')
+});
+
+// Cargar el instrumento para compra
+$('#bInstrument').change(() => {
+  let URLJSON = 'data/instruments.json'
+  let selection = $('#bInstrument').val()
+
+  $.getJSON(URLJSON, function (respuesta, estado) {
+    if(estado === "success"){
+      let misDatos = respuesta;    
+      instSelected = misDatos.find(element => element.id == selection)
+    }
+  });
 })
-dOverlay.addEventListener('click', hideModal)
-bOverlay.addEventListener('click', hideModal)
+
+dOverlay.on('click', hideModal)
+
+bOverlay.on('click', hideModal)
+
+sOverlay.on('click', hideModal)

@@ -18,25 +18,25 @@
         <div class="headerContainer"></div>
         <nav class="navCategories">
           <div class="navIcons">
-            <a href="#">
+            <a href="#" title="Mi billetera">
               <i class="icon-wallet"></i>
               <span class="navTitle">Billetera</span>
             </a>
           </div>
           <div class="navIcons">
-            <a href="#">
+            <a href="#" title="Cotizaciones">
               <i class="icon-priceTags"></i>
               <span class="navTitle">Cotizaciones</span>
             </a>
           </div>
           <div class="navIcons">
-            <a href="#">
+            <a href="#" title="Cerrar Sesión">
               <i class="icon-logout"></i>
               <span class="navTitle">Salir</span>
             </a>
           </div>
         </nav>
-        <button type="button" class="navButton navToggleBtn">
+        <button type="button" class="navButton navToggleBtn" title="Ampliar/Cerrar Sidebar">
           <i class="icon-arrow"></i>
         </button>
       </section>
@@ -54,10 +54,10 @@
                 <p>TOTAL:</p>
               </div>
               <div class="items">
-                <p>Disponibilidades:</p>
+                <p>Instrumentos:</p>
               </div>
               <div class="items">
-                <p>instrumentos:</p>
+                <p>Disponibilidad:</p>
               </div>
             </div>
             <div class="amounts" id="amount">
@@ -110,7 +110,7 @@
         <!-- Fin Sección Historial-->
 
         <!-- Modal de depósito -->
-        <div id="modal" class="dOverlay">
+        <div class="dOverlay">
           <div class="modal">
             <div class="modal__content">
               <h2>Ingrese el monto de depósito</h2>
@@ -119,7 +119,7 @@
                   <li>
                     <div class="inst">
                       <label for="money">Cantidad</label>
-                      <input type="number" id="money">
+                      <input type="number" id="money" min="0" pattern="^[0-9]+">
                     </div>
                   </li>
                 </ul>
@@ -133,7 +133,7 @@
         <!-- Fin modal de depósito -->
 
         <!-- Modal de compra -->
-        <div id="modal" class="bOverlay">
+        <div class="bOverlay">
           <div class="modal">
             <div class="modal__content">
               <h2>Seleccione el instrumento que desea comprar</h2>
@@ -144,12 +144,7 @@
                       <label for="">Instrumento</label>
                       <div class="selection">
                         <!-- Lista de opciones -->
-                        <select id="instrument">
-                          <!-- Opciones de la lista -->
-                          <option value="1" selected>Bitcoin</option> <!-- Opción por defecto -->
-                          <option value="2">Ethereum</option> 
-                          <option value="3">Apple</option>
-                          <option value="4">Microsoft</option>
+                        <select id="bInstrument">
                         </select>
                       </div>
                     </div>
@@ -162,8 +157,8 @@
                   </li>
                   <li>
                     <div class="inst">
-                      <label for="price">Precio</label>
-                      <input type="number" id="price">
+                      <label for="bPrice">Precio</label>
+                      <input type="number" id="bPrice" readonly value="">
                     </div>
                   </li>
                 </ul>
@@ -175,6 +170,44 @@
           </div>
         </div>
         <!-- Fin modal de compra -->
+        <!-- Modal de venta -->
+        <div class="sOverlay">
+          <div class="modal">
+            <div class="modal__content">
+              <h2>Seleccione el instrumento que desea comprar</h2>
+              <form id="bform" class="form">
+                <ul>
+                  <li>
+                    <div class="inst">
+                      <label for="">Instrumento</label>
+                      <div class="selection">
+                        <!-- Lista de opciones -->
+                        <select id="sInstrument">
+                        </select>
+                      </div>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="inst">
+                      <label for="qty">Cantidad</label>
+                      <input type="number" id="qty">
+                    </div>
+                  </li>
+                  <li>
+                    <div class="inst">
+                      <label for="sPrice">Precio</label>
+                      <input type="number" id="sPrice">
+                    </div>
+                  </li>
+                </ul>
+                <button type="submit" id="sConfirm" class="confirmBtn">
+                  Confirmar
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+        <!-- Fin modal de venta -->
       </section>
     </main>
     

@@ -9,7 +9,8 @@
 
 .overlay,
 .dOverlay,
-.bOverlay {
+.bOverlay,
+.sOverlay {
   display: none;
   position: fixed;
   top: 0;
@@ -20,7 +21,8 @@
 }
 .overlay::before,
 .dOverlay::before,
-.bOverlay::before {
+.bOverlay::before,
+.sOverlay::before {
   content: "X";
   color: #FAFAFA;
   font-size: 1.5em;
@@ -32,7 +34,8 @@
 }
 .overlay .modal,
 .dOverlay .modal,
-.bOverlay .modal {
+.bOverlay .modal,
+.sOverlay .modal {
   /* visibility: hidden; */
   display: flex;
   flex-direction: column;
@@ -51,13 +54,15 @@
 }
 .overlay .modal h2,
 .dOverlay .modal h2,
-.bOverlay .modal h2 {
+.bOverlay .modal h2,
+.sOverlay .modal h2 {
   font-size: 1.5rem;
   text-align: center;
 }
 .overlay .modal .modal__content,
 .dOverlay .modal .modal__content,
-.bOverlay .modal .modal__content {
+.bOverlay .modal .modal__content,
+.sOverlay .modal .modal__content {
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -65,37 +70,43 @@
 }
 .overlay .modal .modal__content .form,
 .dOverlay .modal .modal__content .form,
-.bOverlay .modal .modal__content .form {
+.bOverlay .modal .modal__content .form,
+.sOverlay .modal .modal__content .form {
   display: flex;
   flex-direction: column;
   width: 45%;
 }
 .overlay .modal .modal__content .form ul,
 .dOverlay .modal .modal__content .form ul,
-.bOverlay .modal .modal__content .form ul {
+.bOverlay .modal .modal__content .form ul,
+.sOverlay .modal .modal__content .form ul {
   padding: 0;
 }
 .overlay .modal .modal__content .form ul li,
 .dOverlay .modal .modal__content .form ul li,
-.bOverlay .modal .modal__content .form ul li {
+.bOverlay .modal .modal__content .form ul li,
+.sOverlay .modal .modal__content .form ul li {
   list-style: none;
 }
 .overlay .modal .modal__content .form ul li .inst,
 .dOverlay .modal .modal__content .form ul li .inst,
-.bOverlay .modal .modal__content .form ul li .inst {
+.bOverlay .modal .modal__content .form ul li .inst,
+.sOverlay .modal .modal__content .form ul li .inst {
   display: flex;
   justify-content: space-between;
   margin: 1rem;
 }
 .overlay .modal .modal__content .form ul li .inst .selection,
 .dOverlay .modal .modal__content .form ul li .inst .selection,
-.bOverlay .modal .modal__content .form ul li .inst .selection {
+.bOverlay .modal .modal__content .form ul li .inst .selection,
+.sOverlay .modal .modal__content .form ul li .inst .selection {
   position: relative;
   z-index: 300;
 }
 .overlay .modal .modal__content .form ul li .inst input,
 .dOverlay .modal .modal__content .form ul li .inst input,
-.bOverlay .modal .modal__content .form ul li .inst input {
+.bOverlay .modal .modal__content .form ul li .inst input,
+.sOverlay .modal .modal__content .form ul li .inst input {
   width: 92px;
 }
 

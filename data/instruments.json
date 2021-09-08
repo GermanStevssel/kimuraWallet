@@ -1,0 +1,30 @@
+[
+  {
+    "id": 1, 
+    "type": "Cryptocurrency", 
+    "name": "Bitcoin", 
+    "ticker": "BTC", 
+    "price": 51340
+  },
+  {
+    "id": 2, 
+    "type": "Cryptocurrency", 
+    "name": "Ethereum", 
+    "ticker": "ETH", 
+    "price": 3049
+  },
+  {
+    "id": 3, 
+    "type": "Stock", 
+    "name": "Apple", 
+    "ticker": "APPL", 
+    "price": 154
+  },
+  {
+    "id": 4, 
+    "type": "Stock", 
+    "name": "Microsoft", 
+    "ticker": "MSFT", 
+    "price": 303
+  }
+]
