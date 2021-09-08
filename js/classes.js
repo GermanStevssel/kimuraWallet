@@ -7,7 +7,12 @@ class Client {
     this.email = email;
 		this.balance = balance;
     this.wallet = [];
+    this.record = [];
 	}
+  //Método para mostrar el nombre en pantalla
+  nameDisplayed() {
+    return `${this.name} ${this.lastName[0]}.`
+  }
   //Método para actualizar la disponibilidad de dinero del cliente
 	updateBalance(buy) { 
 		this.balance -= buy;
@@ -17,7 +22,7 @@ class Client {
 
     let ticker = operation.ticker
     let index = -1
-
+    //Buscar el elemento igual al seleccionado
     this.wallet.forEach(element => { 
       if(element.ticker == ticker) {
         index = this.wallet.indexOf(element)
@@ -36,19 +41,7 @@ class Client {
     }  
   }
 
-  nameDisplayed() {
-    return `${this.name} ${this.lastName[0]}.`
-  }
-}
-// Clase para crear instancias de instrumentos
-class Instrument {
-	constructor(id, type, name, ticker, price) {
-    this.id = id;
-		this.type = type;
-    this.name = name;
-		this.ticker = ticker;
-		this.price = price;
-	}
+  
 }
 // Clase para crear instancias de operaciones
 class Operations {

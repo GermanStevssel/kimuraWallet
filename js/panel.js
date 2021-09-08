@@ -45,6 +45,9 @@ bBtn.on('click', () => {
 });
 
 sBtn.on('click', () => {
+
+
+
   showModal('.sOverlay')
 });
 
