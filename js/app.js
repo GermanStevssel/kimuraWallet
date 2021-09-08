@@ -8,7 +8,7 @@ function deposit(e) {
 
   let money = parseInt($('#money').val())
   user.balance = money
-  
+  $('#money').val('')
   // Mostrar en pantalla el saldo del usuario   
   showBalance(user)
 }
@@ -37,7 +37,7 @@ function operation(instrument, qty, price, value, user) {
 
 function validateForm() {
   qty = $('#qty').val()
-  console.log(qty)
+
   if (qty === '' || isNaN(qty) || qty <= 0) {
     alert(`Ha ingresado una cantidad invalida`);
     continueBuying = false;
@@ -50,16 +50,12 @@ function validateForm() {
 function buy(e) {
   e.preventDefault()
   validateForm()
-  console.log(user.balance)
+
   if (continueBuying) { 
     qty = parseInt($('#qty').val())
     let price = $('#bPrice').val()
     let balance = user.balance
     let value = qty * price
-    console.log(price)
-    console.log(qty)
-    console.log(balance)
-    console.log(value)
 
     if (balance >= value) { 
       if (qty == 1) {
@@ -78,7 +74,9 @@ function buy(e) {
       alert(`Saldo insuficiente`)
     }
   }
-  $('#qty').val('');
+  $('#bInstrument').val('')
+  $('#qty').val('')
+  $('#bPrice').val('')
 }
 // Función flecha para mostrar el historial de transacciones
 const abstract = (record) => { // Consulta si desea visualizar
