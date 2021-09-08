@@ -105,7 +105,7 @@ $('#bInstrument').change(() => {
       let instrument = misDatos.find(element => element.id == selection)
       console.log(instrument)
       let price = instrument.price
-      $('#price').val(price)   
+      $('#bPrice').val(price)   
     }
   });
 })
