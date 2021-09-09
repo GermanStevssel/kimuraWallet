@@ -6,8 +6,8 @@ class Client {
 		this.lastName = lastName;
     this.email = email;
 		this.balance = balance;
-    this.wallet = [];
     this.record = [];
+    this.wallet = [];
 	}
   //Método para mostrar el nombre en pantalla
   nameDisplayed() {
@@ -17,6 +17,10 @@ class Client {
 	updateBalance(buy) { 
 		this.balance -= buy;
 	}
+
+  updateRecord(history) {
+    this.record.push(history)
+  }  
   //Método para actualizar las tenencias del cliente en su billetera
   updateWallet(operation) {
 
@@ -40,13 +44,19 @@ class Client {
       this.wallet.push(operation);
     }  
   }
-
-  updateRecord(operation) {
-    this.record.push(operation)
-  }  
 }
 // Clase para crear instancias de operaciones
 class Operations {
+  constructor(instrument, qty, price, value) {
+    this.ticker = instrument.ticker;
+    this.name = instrument.name;
+    this.qty = qty;
+    this.price = price;
+    this.value = value;
+  }
+}
+// Clase para crear instancias de historial
+class Summary {
   constructor(date, instrument, qty, price, value) {
     this.date = date;
     this.ticker = instrument.ticker;

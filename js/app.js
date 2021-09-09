@@ -31,15 +31,16 @@ del usuario*/
 function operation(instrument, qty, price, value, user) {
   let date = new Date()
   let formDate = formatDate(date)
-  let add = new Operations(formDate, instrument, qty, price, value)
+  let addRecord = new Summary(formDate, instrument, qty, price, value)
+  let addOperation = new Operations(instrument, qty, price, value)
 
-  user.updateWallet(add)
-  user.updateRecord(add)
+  user.updateRecord(addRecord)
+  user.updateWallet(addOperation)
 }
 
 function validateForm() {
   qty = $('#qty').val()
-
+  console.log(qty)
   if (qty === '' || isNaN(qty) || qty <= 0) {
     alert(`Ha ingresado una cantidad invalida`);
     continueBuying = false;
@@ -59,18 +60,17 @@ function buy(e) {
     let price = $('#bPrice').val()
     let balance = user.balance
     let value = qty * price
-
+    console.log(qty)
     if (balance >= value) { 
       if (qty == 1) {
         alert(`Felicitaciones, has comprado ${qty} unidad de ${instSelected.ticker}`)
         user.updateBalance(value)
-        operation(instSelected, qty, price, value, user)
       } else {
         alert(`Felicitaciones, has comprado ${qty} unidades de ${instSelected.ticker}`)
         user.updateBalance(value)
-        operation(instSelected, qty, price, value, user)
       }
 
+      operation(instSelected, qty, price, value, user)
       showInstruments(user)
       showBalance(user)
       showRecord(user)
