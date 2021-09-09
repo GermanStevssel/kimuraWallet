@@ -33,6 +33,7 @@ function operation(instrument, qty, price, value, user) {
   let add = new Operations(date, instrument, qty, price, value)
 
   user.updateWallet(add)
+  user.updateRecord(add)
 }
 
 function validateForm() {
@@ -70,6 +71,7 @@ function buy(e) {
 
       showInstruments(user)
       showBalance(user)
+      showRecord(user)
     } else {
       alert(`Saldo insuficiente`)
     }

@@ -413,9 +413,18 @@
 }
 .main .pageContainer .displayConts .header {
   display: flex;
+  font-weight: bold;
+  color: #FFFFFF;
+  background-color: #0c107c;
+}
+.main .pageContainer .displayConts .header p {
+  opacity: 1;
 }
 .main .pageContainer .displayConts .instRow {
   display: flex;
+}
+.main .pageContainer .displayConts .instRow p {
+  opacity: 1;
 }
 .main .pageContainer .displayConts .instCol {
   display: flex;

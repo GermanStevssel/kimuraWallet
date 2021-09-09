@@ -45,8 +45,14 @@ bBtn.on('click', () => {
 });
 
 sBtn.on('click', () => {
+  $('#sInstrument').append(`<!-- Opciones de la lista -->
+  <option value="0"></option> <!-- Opción por defecto -->`)
 
-
+  user.wallet.forEach(element => {
+    $('#sInstrument').append(
+      `<option value="${element.id}">${element.name}</option>`
+    )
+  });
 
   showModal('.sOverlay')
 });

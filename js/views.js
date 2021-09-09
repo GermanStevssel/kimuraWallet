@@ -19,12 +19,10 @@ function showBalance(user) {
   // iterar por todos los objetos dentro de wallet y sumar los montos de compra
   for (let i = 0; i < user.wallet.length; i++) {
     value += user.wallet[i].value
-    console.log(user.wallet[i].value)
   }
 
   let total = value + user.balance
   const BALANCE = [total, value, user.balance]
-  // let amounts = document.getElementById('amounts')
   let amounts = $('#amount')  
   // Si ya se genero el balance, elimino y vuelvo a generar los elementos con la info actualizada
   removeChilds(amounts)
@@ -55,7 +53,7 @@ function hideModal(e) {
     e.target.classList.remove('show')
   }
 }
-
+//Mostrar cartera de instrumentos
 function showInstruments(user) {
   let instruments = $('#instruments')
   let wallet = user.wallet
@@ -84,6 +82,37 @@ function showInstruments(user) {
     instruments.append(div)
   });
 }
+//Mostrar historial de operaciones
+function showRecord(user) {
+  let recCont = $('#recCont')
+  let record = user.record
+  
+  removeChilds(record)
+
+  let header = $("<div>")
+  header.addClass("header")
+  header.html(`<div class="instCol"><p>Fecha</p></div>
+    <div class="instCol"><p>Nombre</p></div>
+    <div class="instCol"><p>Ticker</p></div>
+    <div class="instCol"><p>Cantidad</p></div>
+    <div class="instCol"><p>Precio</p></div>
+    <div class="instCol"><p>Valor</p></div>`
+  )
+  recCont.append(header)
+
+  record.forEach(element => {
+    let items = $("<div>")
+    items.addClass("instRow")
+    items.html(`<div class="instCol"><p>${element.date}</p></div>
+      <div class="instCol"><p>${element.name}</p></div>
+      <div class="instCol"><p>${element.ticker}</p></div>
+      <div class="instCol"><p>${element.qty}</p></div>
+      <div class="instCol"><p>${element.price}</p></div>
+      <div class="instCol"><p>${element.value}</p></div>`
+    )
+    recCont.append(items)
+  });
+}
 
 // Animación para mostrar sidebar
 $('.navToggleBtn').click(function () {
@@ -97,13 +126,11 @@ $('.navToggleBtn').click(function () {
 $('#bInstrument').change(() => {
   let URLJSON = 'data/instruments.json'
   let selection = $('#bInstrument').val()
-  console.log(selection)
 
   $.getJSON(URLJSON, function (respuesta, estado) {
     if(estado === "success"){
       let misDatos = respuesta;    
       let instrument = misDatos.find(element => element.id == selection)
-      console.log(instrument)
       let price = instrument.price
       $('#bPrice').val(price)   
     }

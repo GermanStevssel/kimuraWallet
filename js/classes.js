@@ -41,7 +41,9 @@ class Client {
     }  
   }
 
-  
+  updateRecord(operation) {
+    this.record.push(operation)
+  }  
 }
 // Clase para crear instancias de operaciones
 class Operations {
