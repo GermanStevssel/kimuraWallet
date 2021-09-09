@@ -25,7 +25,7 @@ confirmBtn.on('click', buy)
 //Al clickear el boton de comprar, toma los instrumentos del json y los da cómo opción
 bBtn.on('click', () => {
   $('#bInstrument').empty()  
-  let URLJSON = 'data/instruments.json'
+  let URLJSON = '/data/instruments.json'
   $('#bInstrument').append(`<!-- Opciones de la lista -->
   <option value="0"></option> <!-- Opción por defecto -->`)
 
@@ -59,7 +59,7 @@ sBtn.on('click', () => {
 
 // Cargar el instrumento para compra
 $('#bInstrument').change(() => {
-  let URLJSON = 'data/instruments.json'
+  let URLJSON = '/data/instruments.json'
   let selection = $('#bInstrument').val()
 
   $.getJSON(URLJSON, function (respuesta, estado) {

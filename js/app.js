@@ -30,7 +30,8 @@ function findInstrument(instIndex) {
 del usuario*/
 function operation(instrument, qty, price, value, user) {
   let date = new Date()
-  let add = new Operations(date, instrument, qty, price, value)
+  let formDate = formatDate(date)
+  let add = new Operations(formDate, instrument, qty, price, value)
 
   user.updateWallet(add)
   user.updateRecord(add)
@@ -47,6 +48,7 @@ function validateForm() {
     continueBuying = true;
   }
 }
+
 // Función para realizar la compra del instrumento seleccionado
 function buy(e) {
   e.preventDefault()

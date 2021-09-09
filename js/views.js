@@ -4,6 +4,18 @@ function showUser(user) {
   userHTML.html(`${user.nameDisplayed()} Wallet`);
 }
 
+function formatDate(date) {
+  let day = date.getDate()
+  let month = date.getMonth() + 1
+  let year = date.getFullYear()
+  let hour = date.getHours()
+  let min = date.getMinutes()
+
+  date = `${day}/${month}/${year} - ${hour}:${min}`
+
+  return date
+}
+
 function removeChilds(element) {
   if (element.is(':parent')) {
     // Otra alternativa, recorriendo de a un Child con condicional y metodo .hasChildNodes()
@@ -87,7 +99,7 @@ function showRecord(user) {
   let recCont = $('#recCont')
   let record = user.record
   
-  removeChilds(record)
+  removeChilds(recCont)
 
   let header = $("<div>")
   header.addClass("header")
@@ -124,7 +136,7 @@ $('.navToggleBtn').click(function () {
 
 // Cargar el precio del producto seleccionado
 $('#bInstrument').change(() => {
-  let URLJSON = 'data/instruments.json'
+  let URLJSON = '/data/instruments.json'
   let selection = $('#bInstrument').val()
 
   $.getJSON(URLJSON, function (respuesta, estado) {
