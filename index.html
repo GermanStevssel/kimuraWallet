@@ -114,7 +114,7 @@
     <div class="modal">
       <div class="modal__content">
         <h2><span class="titlesin">Kimura</span> - Apertura de cuenta</h2>
-        <form id="signUpForm" action="/panel.html">
+        <form id="signUpForm" class="form" action="/panel.html">
           <div class="form-row">
             <div class="form-floating mb-3">
               <input 
@@ -160,9 +160,23 @@
               >
               <label for="email">Email</label>
             </div>
-          <button type="submit" id="sInNext" class="nxtBtn">
-            Continuar
-          </button>
+            <div class="form-floating mb-3">
+              <input 
+                type="password" 
+                id="password"
+                class="form-control"
+                name="Email"
+                placeholder="miemail@mail.com"
+                required
+              >
+              <label for="password">Contraseña</label>
+            </div>
+            <div class="btnCont">
+              <button type="submit" id="sInNext" class="nxtBtn">
+                Continuar
+              </button>
+            </div>           
+          </div>
         </form>
       </div>
     </div>

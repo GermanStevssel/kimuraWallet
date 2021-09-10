@@ -1,28 +1,28 @@
 [
   {
     "id": 1, 
-    "type": "Cryptocurrency", 
+    "type": "Criptomoneda", 
     "name": "Bitcoin", 
     "ticker": "BTC", 
     "price": 51340
   },
   {
     "id": 2, 
-    "type": "Cryptocurrency", 
+    "type": "Criptomoneda", 
     "name": "Ethereum", 
     "ticker": "ETH", 
     "price": 3049
   },
   {
     "id": 3, 
-    "type": "Stock", 
+    "type": "Acción", 
     "name": "Apple", 
     "ticker": "APPL", 
     "price": 154
   },
   {
     "id": 4, 
-    "type": "Stock", 
+    "type": "Acción", 
     "name": "Microsoft", 
     "ticker": "MSFT", 
     "price": 303

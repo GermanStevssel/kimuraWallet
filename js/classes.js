@@ -57,8 +57,9 @@ class Operations {
 }
 // Clase para crear instancias de historial
 class Summary {
-  constructor(date, instrument, qty, price, value) {
+  constructor(date, type, instrument, qty, price, value) {
     this.date = date;
+    this.type = type;
     this.ticker = instrument.ticker;
     this.name = instrument.name;
     this.qty = qty;

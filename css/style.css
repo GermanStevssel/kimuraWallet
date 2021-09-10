@@ -121,6 +121,11 @@
   border: none;
 }
 
+.btnCont {
+  display: flex;
+  justify-content: flex-end;
+}
+
 .depositBtn,
 .nxtBtn {
   color: #FFFFFF;

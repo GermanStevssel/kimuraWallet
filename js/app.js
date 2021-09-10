@@ -5,9 +5,14 @@ let qty = 0;
 // Función para depositar fondos en la cuenta
 function deposit(e) {
   e.preventDefault()
-
   let money = parseInt($('#money').val())
-  user.balance = money
+
+  if (user.balance === undefined) {
+    user.balance = money
+  } else {
+    user.balance += money
+  }
+    
   $('#money').val('')
   // Mostrar en pantalla el saldo del usuario   
   showBalance(user)
@@ -31,7 +36,8 @@ del usuario*/
 function operation(instrument, qty, price, value, user) {
   let date = new Date()
   let formDate = formatDate(date)
-  let addRecord = new Summary(formDate, instrument, qty, price, value)
+  let type = instrument.type
+  let addRecord = new Summary(formDate, type, instrument, qty, price, value)
   let addOperation = new Operations(instrument, qty, price, value)
 
   user.updateRecord(addRecord)
@@ -60,7 +66,7 @@ function buy(e) {
     let price = $('#bPrice').val()
     let balance = user.balance
     let value = qty * price
-    console.log(qty)
+
     if (balance >= value) { 
       if (qty == 1) {
         alert(`Felicitaciones, has comprado ${qty} unidad de ${instSelected.ticker}`)

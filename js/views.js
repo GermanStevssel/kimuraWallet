@@ -1,7 +1,7 @@
-// Función para mostrar el nombre del usuario en el html
-function showUser(user) {
-  let userHTML = $('#user')
-  userHTML.html(`${user.nameDisplayed()} Wallet`);
+function removeChilds(element) {
+  if (element.is(':parent')) {
+    element.empty()
+  }
 }
 
 function formatDate(date) {
@@ -20,14 +20,10 @@ function formatDate(date) {
   return date
 }
 
-function removeChilds(element) {
-  if (element.is(':parent')) {
-    // Otra alternativa, recorriendo de a un Child con condicional y metodo .hasChildNodes()
-    // while (element.childNodes.length >= 1) {
-    //   element.removeChild(element.firstChild)
-    // }
-    element.empty()
-  }
+// Función para mostrar el nombre del usuario en el html
+function showUser(user) {
+  let userHTML = $('#user')
+  userHTML.html(`${user.nameDisplayed()} Wallet`);
 }
 
 function showBalance(user) {
@@ -108,6 +104,7 @@ function showRecord(user) {
   let header = $("<div>")
   header.addClass("header")
   header.html(`<div class="instCol"><p>Fecha</p></div>
+    <div class="instCol"><p>Especie</p></div>
     <div class="instCol"><p>Nombre</p></div>
     <div class="instCol"><p>Ticker</p></div>
     <div class="instCol"><p>Cantidad</p></div>
@@ -120,6 +117,7 @@ function showRecord(user) {
     let items = $("<div>")
     items.addClass("instRow")
     items.html(`<div class="instCol"><p>${element.date}</p></div>
+      <div class="instCol"><p>${element.type}</p></div>
       <div class="instCol"><p>${element.name}</p></div>
       <div class="instCol"><p>${element.ticker}</p></div>
       <div class="instCol"><p>${element.qty}</p></div>
