@@ -95,10 +95,9 @@ function showInstruments(user) {
   });
 }
 //Mostrar historial de operaciones
-function showRecord(user) {
+function showRecord(record) {
   let recCont = $('#recCont')
-  let record = user.record
-  
+    
   removeChilds(recCont)
 
   let header = $("<div>")

@@ -18,18 +18,16 @@ function deposit(e) {
   showBalance(user)
 }
 // Función para encontrar el instrumento que seleccionó el usuario
-function findInstrument(instIndex) {
-  let URLJSON = 'data/instruments.json'
+function findInstrument() {
+  let URLJSON = '/data/instruments.json'
+  let selection = $('#bInstrument').val()
 
   $.getJSON(URLJSON, function (respuesta, estado) {
     if(estado === "success"){
-      let misDatos = respuesta;
-
-      instSelected = misDatos.find(element => element.id == instIndex)   
+      let misDatos = respuesta;    
+      instSelected = misDatos.find(element => element.id == selection)
     }
   });
-  
-  return instSelected;
 }
 /* Función para generar un objeto de la clase Operations y guardarla en el array wallet
 del usuario*/
@@ -43,7 +41,7 @@ function operation(instrument, qty, price, value, user) {
   user.updateRecord(addRecord)
   user.updateWallet(addOperation)
 }
-
+// Función para validar los datos ingresados en compra
 function validateForm() {
   qty = $('#qty').val()
   console.log(qty)
@@ -55,7 +53,6 @@ function validateForm() {
     continueBuying = true;
   }
 }
-
 // Función para realizar la compra del instrumento seleccionado
 function buy(e) {
   e.preventDefault()
@@ -79,7 +76,7 @@ function buy(e) {
       operation(instSelected, qty, price, value, user)
       showInstruments(user)
       showBalance(user)
-      showRecord(user)
+      showRecord(user.record)
     } else {
       alert(`Saldo insuficiente`)
     }
@@ -88,21 +85,9 @@ function buy(e) {
   $('#qty').val('')
   $('#bPrice').val('')
 }
-// Función flecha para mostrar el historial de transacciones
-const abstract = (record) => { // Consulta si desea visualizar
-  let check = confirm(`¿Desea controlar su historial de transacciones?`)
-
-  if (check) {
-    let order = prompt(`¿Quiere observarlo ordenado de mayor a menor por monto?
-    Si / No`).toLowerCase();
-
-    if (order === "si") {
-      let arrangedWallet = record.sort((a, b) => b.value - a.value)
-      console.log(`Puede ver su extracto a continuación: `, arrangedWallet)
-    } else {
-      console.log(`Puede ver su extracto ordenado cronologicamente a continuación: `, record);
-    }
-  } else {
-    alert(`Puede continuar realizando distintas operaciones desde su cuenta.`)
-  }
+// Función flecha para filtrar el historial de transacciones por fecha
+const filterAbstract = (record) => { 
+    let dateArrangedAbstract = record.sort((a, b) => b.date - a.date)
+    showRecord(dateArrangedAbstract)
 }
+  

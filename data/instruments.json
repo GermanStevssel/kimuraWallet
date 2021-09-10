@@ -26,5 +26,47 @@
     "name": "Microsoft", 
     "ticker": "MSFT", 
     "price": 303
+  },
+  {
+    "id": 5, 
+    "type": "Acción", 
+    "name": "Petrobras", 
+    "ticker": "PBR", 
+    "price": 10.23
+  },
+  {
+    "id": 6, 
+    "type": "Acción", 
+    "name": "Tesla", 
+    "ticker": "TSLA", 
+    "price": 1323
+  },
+  {
+    "id": 7, 
+    "type": "Criptomoneda", 
+    "name": "Cardano", 
+    "ticker": "ADA", 
+    "price": 3.07
+  },
+  {
+    "id": 8, 
+    "type": "Criptomoneda", 
+    "name": "Tron", 
+    "ticker": "TRX", 
+    "price": 0.14
+  },
+  {
+    "id": 9, 
+    "type": "Acción", 
+    "name": "Nvidia", 
+    "ticker": "NVDA", 
+    "price": 654
+  },
+  {
+    "id": 10, 
+    "type": "Criptomoneda", 
+    "name": "Axis", 
+    "ticker": "AXS", 
+    "price": 45
   }
 ]

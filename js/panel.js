@@ -58,17 +58,7 @@ sBtn.on('click', () => {
 });
 
 // Cargar el instrumento para compra
-$('#bInstrument').change(() => {
-  let URLJSON = '/data/instruments.json'
-  let selection = $('#bInstrument').val()
-
-  $.getJSON(URLJSON, function (respuesta, estado) {
-    if(estado === "success"){
-      let misDatos = respuesta;    
-      instSelected = misDatos.find(element => element.id == selection)
-    }
-  });
-})
+$('#bInstrument').change(findInstrument)
 
 dOverlay.on('click', hideModal)
 
