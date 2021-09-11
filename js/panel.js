@@ -1,9 +1,9 @@
-let bBtn = $('#buyBtn')
-let sBtn = $('#sellBtn')
-let dOverlay = $('.dOverlay')
-let bOverlay = $('.bOverlay')
-let sOverlay = $('.sOverlay')
-let confirmBtn = $('#bConfirm')
+// let bBtn = $('#buyBtn')
+// let sBtn = $('#sellBtn')
+// let dOverlay = $('.dOverlay')
+// let bOverlay = $('.bOverlay')
+// let sOverlay = $('.sOverlay')
+// let confirmBtn = $('#bConfirm')
 
 let logUser = JSON.parse(localStorage.getItem('user'))
 let dni = logUser.dni
@@ -13,7 +13,8 @@ let email = logUser.email
 
 user = new Client(dni, name, lastName, email) 
 
-showUser(user)
+$(document).ready(showUser(user))
+
 
 $('#deposit').click(() => {
   showModal('.dOverlay')
@@ -21,9 +22,9 @@ $('#deposit').click(() => {
 
 $('#dConfirm').click(deposit)
 
-confirmBtn.on('click', buy)
+$('#bConfirm').on('click', buy)
 //Al clickear el boton de comprar, toma los instrumentos del json y los da cómo opción
-bBtn.on('click', () => {
+$('#buyBtn').on('click', () => {
   $('#bInstrument').empty()  
   let URLJSON = '/data/instruments.json'
   $('#bInstrument').append(`<!-- Opciones de la lista -->
@@ -44,7 +45,7 @@ bBtn.on('click', () => {
   showModal('.bOverlay')
 });
 
-sBtn.on('click', () => {
+$('#sellBtn').on('click', () => {
   $('#sInstrument').append(`<!-- Opciones de la lista -->
   <option value="0"></option> <!-- Opción por defecto -->`)
 
@@ -60,11 +61,11 @@ sBtn.on('click', () => {
 // Cargar el instrumento para compra
 $('#bInstrument').change(findInstrument)
 // Mostrar modal para depositar
-dOverlay.on('click', hideModal)
+$('.dOverlay').on('click', hideModal)
 // Mostrar modal para comprar
-bOverlay.on('click', hideModal)
+$('.bOverlay').on('click', hideModal)
 // Mostrar modal para vender
-sOverlay.on('click', hideModal)
+$('.sOverlay').on('click', hideModal)
 // Mostrar historial completo
 $('#todo').click(() => {
   filterAbstract('todo')
