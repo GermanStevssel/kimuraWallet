@@ -7,15 +7,18 @@ function deposit(e) {
   e.preventDefault()
   let money = parseInt($('#money').val())
 
-  if (user.balance === undefined) {
-    user.balance = money
-  } else {
-    user.balance += money
+  if ($('#money').val() != '') {
+    if (user.balance === undefined) {
+      user.balance = money
+    } else {
+      user.balance += money
+    }
+
+    showBalance(user)
   }
-    
+
   $('#money').val('')
   // Mostrar en pantalla el saldo del usuario   
-  showBalance(user)
 }
 // Función para encontrar el instrumento que seleccionó el usuario
 function findInstrument() {
@@ -100,15 +103,14 @@ let record = user.record
 function arrangedRecord(sel) {
   let record = user.record
   let recordArranged
-    console.log(user.record)
+
     if (sel == 'fecha') {
       showRecord(record)
     } else if (sel == "mayor") {
-      recordArranged = record.sort((a, b) => b.value - a.value)
+      recordArranged = record.slice(0).sort((a, b) => b.value - a.value)
       showRecord(recordArranged)
     } else {
-      recordArranged = record.sort((a, b) => a.value - b.value)
+      recordArranged = record.slice(0).sort((a, b) => a.value - b.value)
       showRecord(recordArranged)
-      console.log(record)
     }
   }
