@@ -301,7 +301,7 @@
   flex-wrap: wrap;
   flex: 1;
   position: relative;
-  background-color: #3454db;
+  background-color: #0c107c;
   height: 100%;
   width: 5%;
   box-shadow: 5px 0 12px 0 rgba(0, 0, 0, 0.06);
@@ -328,12 +328,12 @@
   margin-left: 15px;
 }
 .main .nav .navCategories .navIcons:hover {
-  background-color: #0c107c;
+  background-color: #3454db;
 }
 .main .nav .navButton {
   position: absolute;
   color: white;
-  background-color: #3454db;
+  background-color: #0c107c;
   padding: 0.4rem;
   width: 5vw;
   font-size: 2rem;
@@ -342,7 +342,7 @@
   right: 0;
 }
 .main .nav .navButton:hover {
-  background-color: #0c107c;
+  background-color: #3454db;
 }
 .main .nav .rotate {
   -webkit-transform: rotateY(180deg);
@@ -399,6 +399,54 @@
 .main .pageContainer .disponibilidades .balanceItems .values::before,
 .main .pageContainer .disponibilidades .amounts .values::before {
   content: "$";
+}
+.main .pageContainer .actions {
+  display: flex;
+  color: #FFFFFF;
+  justify-content: space-between;
+  align-content: center;
+  margin-top: 0.5rem;
+}
+.main .pageContainer .actions p {
+  font-weight: bold;
+  margin: 0;
+  padding: 0.3rem;
+  text-align: center;
+}
+.main .pageContainer .actions .filter,
+.main .pageContainer .actions .order {
+  display: flex;
+  flex-direction: column;
+  width: 48%;
+  background-color: #0c107c;
+  box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.06);
+  border-radius: 10px;
+}
+.main .pageContainer .actions .filter .options,
+.main .pageContainer .actions .order .options {
+  display: flex;
+}
+.main .pageContainer .actions .filter .options .actionBtn,
+.main .pageContainer .actions .order .options .actionBtn {
+  flex: 1;
+  text-align: center;
+  color: #010101;
+  background-color: #FFFFFF;
+  border: 1px solid #eff3f6;
+  margin: 0;
+  padding: 0;
+}
+.main .pageContainer .actions .filter .options .actionBtn:hover,
+.main .pageContainer .actions .order .options .actionBtn:hover {
+  border-color: #92a6ff;
+}
+.main .pageContainer .actions .filter .options .actionBtn:first-child,
+.main .pageContainer .actions .order .options .actionBtn:first-child {
+  border-radius: 0 0 0 9px;
+}
+.main .pageContainer .actions .filter .options .actionBtn:last-child,
+.main .pageContainer .actions .order .options .actionBtn:last-child {
+  border-radius: 0 0 9px 0;
 }
 .main .pageContainer .displayConts {
   display: flex;

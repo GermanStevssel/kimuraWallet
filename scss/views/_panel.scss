@@ -13,7 +13,7 @@
     flex-wrap: wrap;
     flex: 1;
     position: relative;
-    background-color: $blue1;
+    background-color: $blue0;
     height: 100%;
     width: 5%;
     box-shadow: 5px 0 12px 0 rgba(0, 0, 0, 0.06);
@@ -43,7 +43,7 @@
         }
 
         &:hover {
-          background-color: $blue0;
+          background-color: $blue1;
         }
       }
     }
@@ -51,7 +51,7 @@
     .navButton {
       position: absolute;
       color: white;
-      background-color: $blue1;
+      background-color: $blue0;
       padding: 0.4rem;
       width: 5vw;
       font-size: 2rem;
@@ -61,7 +61,7 @@
       
 
       &:hover {
-        background-color: $blue0;
+        background-color: $blue1;
       }
     }
 
@@ -124,6 +124,57 @@
           &::before {
             content: "$";
            
+          }
+        }
+      }
+    }
+
+    .actions {
+      display: flex;
+      color: $white;
+      justify-content: space-between;
+      align-content: center;
+      margin-top: 0.5rem;
+
+      p {
+        font-weight: bold;
+        margin: 0;
+        padding: 0.3rem;
+        text-align: center;
+      }
+
+      .filter,
+      .order {
+        display: flex;
+        flex-direction: column;
+        width: 48%;
+        background-color: $blue0;
+        box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.06);
+        border-radius: 10px;
+
+        .options {
+          display: flex;
+
+          .actionBtn {
+            flex: 1;
+            text-align: center;
+            color: #010101;
+            background-color: $white;
+            border: 1px solid $gray2;
+            margin: 0;
+            padding: 0;
+
+            &:hover {
+              border-color: $blue3
+            }
+
+            &:first-child {
+              border-radius: 0 0 0 9px;
+            }
+
+            &:last-child {
+              border-radius: 0 0 9px 0;
+            }
           }
         }
       }

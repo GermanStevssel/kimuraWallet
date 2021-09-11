@@ -85,9 +85,30 @@ function buy(e) {
   $('#qty').val('')
   $('#bPrice').val('')
 }
-// Función flecha para filtrar el historial de transacciones por fecha
-const filterAbstract = (record) => { 
-    let dateArrangedAbstract = record.sort((a, b) => b.date - a.date)
-    showRecord(dateArrangedAbstract)
+// Función para mostrar solo criptomonedas en historial
+function filterAbstract(sel) {
+let record = user.record
+
+  if (sel == 'todo') {
+    showRecord(record)
+  } else {
+    let recordFilter = record.filter(element => element.type == sel)
+    showRecord(recordFilter)
+  }
 }
-  
+// Función para ordenar el historial
+function arrangedRecord(sel) {
+  let record = user.record
+  let recordArranged
+    console.log(user.record)
+    if (sel == 'fecha') {
+      showRecord(record)
+    } else if (sel == "mayor") {
+      recordArranged = record.sort((a, b) => b.value - a.value)
+      showRecord(recordArranged)
+    } else {
+      recordArranged = record.sort((a, b) => a.value - b.value)
+      showRecord(recordArranged)
+      console.log(record)
+    }
+  }

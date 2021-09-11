@@ -41,10 +41,6 @@
 .icon-arrow:before {
   content: "\e90a";
 }
-.icon-arrow:hover {
-  content: "\e90a";
-  color: #77DD77;
-}
 .icon-mail:before {
   content: "\e903";
 }

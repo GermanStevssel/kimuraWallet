@@ -59,9 +59,33 @@ sBtn.on('click', () => {
 
 // Cargar el instrumento para compra
 $('#bInstrument').change(findInstrument)
-
+// Mostrar modal para depositar
 dOverlay.on('click', hideModal)
-
+// Mostrar modal para comprar
 bOverlay.on('click', hideModal)
-
+// Mostrar modal para vender
 sOverlay.on('click', hideModal)
+// Mostrar historial completo
+$('#todo').click(() => {
+  filterAbstract('todo')
+})
+// Filtrar historial por criptomoneda
+$('#cripto').click(() => {
+  filterAbstract('Criptomoneda')
+})
+// Filtrar historial por acciones
+$('#acciones').click(() => {
+  filterAbstract('Acción')
+})
+// Ordenar historial por fecha
+$('#fecha').click(() => {
+  arrangedRecord('fecha')
+})
+// Ordenar historial de mayor a menor valor
+$('#mayor').click(() => {
+  arrangedRecord('mayor')
+})
+// Ordenar historial de menor a mayor valor
+$('#menor').click(() => {
+  arrangedRecord('menor')
+})
