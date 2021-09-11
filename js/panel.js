@@ -1,10 +1,3 @@
-// let bBtn = $('#buyBtn')
-// let sBtn = $('#sellBtn')
-// let dOverlay = $('.dOverlay')
-// let bOverlay = $('.bOverlay')
-// let sOverlay = $('.sOverlay')
-// let confirmBtn = $('#bConfirm')
-
 let logUser = JSON.parse(localStorage.getItem('user'))
 let dni = logUser.dni
 let name = logUser.name
