@@ -137,10 +137,10 @@ $('.navToggleBtn').click(function () {
 
 // Cargar el precio del producto seleccionado
 $('#bInstrument').change(() => {
-  let URLJSON = '/data/instruments.json'
+  let URLJSON = 'https://germanstevssel.github.io/apiInstruments/db.json'
   let selection = $('#bInstrument').val()
 
-  $.getJSON(URLJSON, function (respuesta, estado) {
+  $.get(URLJSON, function (respuesta, estado) {
     if(estado === "success"){
       let misDatos = respuesta;    
       let instrument = misDatos.find(element => element.id == selection)

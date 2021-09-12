@@ -22,10 +22,10 @@ function deposit(e) {
 }
 // Función para encontrar el instrumento que seleccionó el usuario
 function findInstrument() {
-  let URLJSON = '/data/instruments.json'
+  let URLJSON = 'https://germanstevssel.github.io/apiInstruments/db.json'
   let selection = $('#bInstrument').val()
 
-  $.getJSON(URLJSON, function (respuesta, estado) {
+  $.get(URLJSON, function (respuesta, estado) {
     if(estado === "success"){
       let misDatos = respuesta;    
       instSelected = misDatos.find(element => element.id == selection)

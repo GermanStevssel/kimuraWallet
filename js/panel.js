@@ -19,11 +19,11 @@ $('#bConfirm').on('click', buy)
 //Al clickear el boton de comprar, toma los instrumentos del json y los da cómo opción
 $('#buyBtn').on('click', () => {
   $('#bInstrument').empty()  
-  let URLJSON = '/data/instruments.json'
+  let URLJSON = 'https://germanstevssel.github.io/apiInstruments/db.json'
   $('#bInstrument').append(`<!-- Opciones de la lista -->
   <option value="0"></option> <!-- Opción por defecto -->`)
 
-  $.getJSON(URLJSON, function (respuesta, estado) {
+  $.get(URLJSON, function (respuesta, estado) {
     if(estado === "success"){
       let misDatos = respuesta;
 
