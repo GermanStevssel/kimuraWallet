@@ -32,14 +32,14 @@ class Client {
         index = this.wallet.indexOf(element)
       }
     })
-
+    // Si el elemento existe, solo actualizar cantidad y valor en el objeto
     if( index !== -1) {
       let qty = operation.qty
       let value = operation.value
 
       this.wallet[index].qty += qty
       this.wallet[index].value += value
-
+    // Si no existe, pushear el objeto completo
     } else {
       this.wallet.push(operation);
     }  

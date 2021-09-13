@@ -2,6 +2,22 @@
 let user;
 let instSelected;
 let qty = 0;
+// Función para formatear las fechas 
+function formatDate(date) {
+  let day = date.getDate()
+  let month = date.getMonth() + 1
+  let year = date.getFullYear()
+  let hour = date.getHours()
+  let min = date.getMinutes()
+
+  if (min < 10) {
+    min = "0"+ min
+  }
+
+  date = `${day}/${month}/${year} - ${hour}:${min}`
+
+  return date
+}
 // Función para depositar fondos en la cuenta
 function deposit(e) {
   e.preventDefault()
@@ -17,8 +33,7 @@ function deposit(e) {
     showBalance(user)
   }
 
-  $('#money').val('')
-  // Mostrar en pantalla el saldo del usuario   
+  $('#money').val('')  
 }
 // Función para encontrar el instrumento que seleccionó el usuario
 function findInstrument() {
@@ -107,6 +122,7 @@ function arrangedRecord(sel) {
     if (sel == 'fecha') {
       showRecord(record)
     } else if (sel == "mayor") {
+      // Duplico el array con .slice() para no modificar el original con .sort()
       recordArranged = record.slice(0).sort((a, b) => b.value - a.value)
       showRecord(recordArranged)
     } else {

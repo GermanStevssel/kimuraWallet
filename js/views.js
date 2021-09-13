@@ -3,29 +3,12 @@ function removeChilds(element) {
     element.empty()
   }
 }
-
-function formatDate(date) {
-  let day = date.getDate()
-  let month = date.getMonth() + 1
-  let year = date.getFullYear()
-  let hour = date.getHours()
-  let min = date.getMinutes()
-
-  if (min < 10) {
-    min = "0"+ min
-  }
-
-  date = `${day}/${month}/${year} - ${hour}:${min}`
-
-  return date
-}
-
-// Función para mostrar el nombre del usuario en el html
+// Función para mostrar el nombre del usuario en el DOM
 function showUser(user) {
   let userHTML = $('#user')
   userHTML.html(`${user.nameDisplayed()} Wallet`);
 }
-
+// Función para mostrar el balance del usuario en el DOM
 function showBalance(user) {
   let value = 0
   // iterar por todos los objetos dentro de wallet y sumar los montos de compra
@@ -46,12 +29,12 @@ function showBalance(user) {
     $(".amounts").append(div)
   }
 }
-
+// Función para mostrar modales
 function showModal(el) {
   let modal = $(el)
   modal.addClass('show')
 }
-
+// Función para ocultar modales
 function hideModal(e) {
   let modal = $('.overlay')[0] // Accedo al primer elemento del objeto generado por JQuery
   let dModal = $('.dOverlay')[0]
@@ -126,17 +109,15 @@ function showRecord(record) {
     recCont.append(items)
   });
 }
-
-// Animación para mostrar sidebar
-$('.navToggleBtn').click(function () {
+// Función para animar sidebar
+function animateSideBar() {
 	$('.nav').toggleClass("mostrar");
   $('.pageContainer').toggleClass('pageContWidth');
   $('.navToggleBtn').toggleClass('rotate')
   $('.navTitle').toggle()
-});
-
-// Cargar el precio del producto seleccionado
-$('#bInstrument').change(() => {
+}
+// Colocar el precio de compra del instrumento seleccionado
+function setPrice() {
   let URLJSON = 'https://germanstevssel.github.io/apiInstruments/db.json'
   let selection = $('#bInstrument').val()
 
@@ -148,4 +129,8 @@ $('#bInstrument').change(() => {
       $('#bPrice').val(price)   
     }
   });
-})
+}
+// Darle animación a la sidebar al clickear en el botón
+$('.navToggleBtn').click(animateSideBar);
+// Cargar el precio del producto seleccionado
+$('#bInstrument').change(setPrice)

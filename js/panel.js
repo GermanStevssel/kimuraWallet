@@ -8,7 +8,6 @@ user = new Client(dni, name, lastName, email)
 
 $(document).ready(showUser(user))
 
-
 $('#deposit').click(() => {
   showModal('.dOverlay')
 })
@@ -50,7 +49,6 @@ $('#sellBtn').on('click', () => {
 
   showModal('.sOverlay')
 });
-
 // Cargar el instrumento para compra
 $('#bInstrument').change(findInstrument)
 // Mostrar modal para depositar
