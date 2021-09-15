@@ -65,10 +65,10 @@ function validateForm() {
   console.log(qty)
   if (qty === '' || isNaN(qty) || qty <= 0) {
     alert(`Ha ingresado una cantidad invalida`);
-    continueBuying = false;
+    continueOp = false;
     $('#qty').val('') ;
   } else {
-    continueBuying = true;
+    continueOp = true;
   }
 }
 // Función para realizar la compra del instrumento seleccionado
@@ -76,7 +76,7 @@ function buy(e) {
   e.preventDefault()
   validateForm()
 
-  if (continueBuying) { 
+  if (continueOp) { 
     qty = parseInt($('#qty').val())
     let price = $('#bPrice').val()
     let balance = user.balance
@@ -102,6 +102,10 @@ function buy(e) {
   $('#bInstrument').val('')
   $('#qty').val('')
   $('#bPrice').val('')
+}
+// Función para realizar la venta del instrumento seleccionado
+function sell(e) {
+  e.preventDefault()
 }
 // Función para mostrar solo criptomonedas en historial
 function filterAbstract(sel) {
