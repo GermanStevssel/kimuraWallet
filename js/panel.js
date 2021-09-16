@@ -7,21 +7,23 @@ let email = logUser.email
 user = new Client(dni, name, lastName, email) 
 
 $(document).ready(showUser(user))
-
+// Mostrar modal de depósito
 $('#deposit').click(() => {
   showModal('.dOverlay')
 })
-
+// Al clickear llama la función deposit, para depositar dinero en la cuenta
 $('#dConfirm').click(deposit)
-
-$('#bConfirm').on('click', buy)
-//Al clickear el boton de comprar, toma los instrumentos del json y los da cómo opción
+// Ocultar modal para depositar
+$('.dOverlay').on('click', hideModal)
+/* Al clickear el boton de comprar, toma los instrumentos del json y 
+* los da cómo opción, además de mostrar el modal de compra
+*/
 $('#buyBtn').on('click', () => {
   $('#bInstrument').empty()  
   let URLJSON = 'https://germanstevssel.github.io/apiInstruments/db.json'
   $('#bInstrument').append(`<!-- Opciones de la lista -->
   <option value="0"></option> <!-- Opción por defecto -->`)
-
+  
   $.get(URLJSON, function (respuesta, estado) {
     if(estado === "success"){
       let misDatos = respuesta;
@@ -33,11 +35,14 @@ $('#buyBtn').on('click', () => {
       }  
     }
   });
-
+  // Mostrar modal de compra
   showModal('.bOverlay')
 });
-
+/* Al clickear el boton de vender, toma los instrumentos de la billetera
+* del usuario y los da cómo opción, además de mostrar el modal de venta
+*/
 $('#sellBtn').on('click', () => {
+  $('#sInstrument').empty()
   $('#sInstrument').append(`<!-- Opciones de la lista -->
   <option value="0"></option> <!-- Opción por defecto -->`)
 
@@ -46,16 +51,20 @@ $('#sellBtn').on('click', () => {
       `<option value="${element.id}">${element.name}</option>`
     )
   });
-
+  // Mostrar modal de venta
   showModal('.sOverlay')
 });
 // Cargar el instrumento para compra
 $('#bInstrument').change(findInstrument)
-// Mostrar modal para depositar
-$('.dOverlay').on('click', hideModal)
-// Mostrar modal para comprar
+// Cargar el instrumento para venta
+$('#sInstrument').change(findInstrument)
+// Al clickear llama la función buy, para comprar los instrumentos
+$('#bConfirm').on('click', buy)
+// Al clickear llama la función sell, para vender los instrumentos
+$('#sConfirm').on('click', sell)
+// Ocultar modal para comprar
 $('.bOverlay').on('click', hideModal)
-// Mostrar modal para vender
+// Ocultar modal para vender
 $('.sOverlay').on('click', hideModal)
 // Mostrar historial completo
 $('#todo').click(() => {

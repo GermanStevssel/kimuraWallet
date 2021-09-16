@@ -38,14 +38,18 @@ function deposit(e) {
 // Función para encontrar el instrumento que seleccionó el usuario
 function findInstrument() {
   let URLJSON = 'https://germanstevssel.github.io/apiInstruments/db.json'
-  let selection = $('#bInstrument').val()
+  let selection = $(this).val()
 
-  $.get(URLJSON, function (respuesta, estado) {
-    if(estado === "success"){
-      let misDatos = respuesta;    
-      instSelected = misDatos.find(element => element.id == selection)
-    }
-  });
+  if (this.id == 'bInstrument') {
+    $.get(URLJSON, function (respuesta, estado) {
+      if(estado === "success"){
+        let misDatos = respuesta;    
+        instSelected = misDatos.find(element => element.id == selection)
+      }
+    })
+  } else {
+    instSelected = user.wallet.find(element => element.id == selection)
+  }
 }
 /* Función para generar un objeto de la clase Operations y guardarla en el array wallet
 del usuario*/
@@ -56,28 +60,45 @@ function operation(instrument, qty, price, value, user) {
   let addRecord = new Summary(formDate, type, instrument, qty, price, value)
   let addOperation = new Operations(instrument, qty, price, value)
 
+  console.log(addRecord)
+  console.log(addOperation)
   user.updateRecord(addRecord)
   user.updateWallet(addOperation)
 }
 // Función para validar los datos ingresados en compra
-function validateForm() {
-  qty = $('#qty').val()
-  console.log(qty)
-  if (qty === '' || isNaN(qty) || qty <= 0) {
+function validateBuy() {
+  let bQty = $('#bQty').val()
+
+  if (bQty === '' || 
+      isNaN(bQty) || 
+      bQty <= 0) {
     alert(`Ha ingresado una cantidad invalida`);
-    continueOp = false;
-    $('#qty').val('') ;
+    continueBuy = false;
+    $('#bQty').val('');
   } else {
-    continueOp = true;
+    continueBuy = true;
+  }
+}
+// Función para validar los datos ingresados en venta
+function validateSell() {
+  let sQty = $('#sQty').val()
+
+  if (sQty === '' ||
+      isNaN(sQty)) {
+    alert(`Ha ingresado una cantidad invalida`);
+    continueSell = false
+    $('#sQty').val('');
+  } else {
+    continueSell = true
   }
 }
 // Función para realizar la compra del instrumento seleccionado
 function buy(e) {
   e.preventDefault()
-  validateForm()
+  validateBuy()
 
-  if (continueOp) { 
-    qty = parseInt($('#qty').val())
+  if (continueBuy) { 
+    qty = parseInt($('#bQty').val())
     let price = $('#bPrice').val()
     let balance = user.balance
     let value = qty * price
@@ -100,12 +121,40 @@ function buy(e) {
     }
   }
   $('#bInstrument').val('')
-  $('#qty').val('')
+  $('#bQty').val('')
   $('#bPrice').val('')
 }
 // Función para realizar la venta del instrumento seleccionado
 function sell(e) {
   e.preventDefault()
+  validateSell()
+
+  if (continueSell) {
+    qty = -parseInt($('#sQty').val())
+    let price = $('#sPrice').val()
+    let qtyAvail = instSelected.qty
+    let value = qty * price
+
+    if (-qty <= qtyAvail) {
+      if (qty == 1) {
+        alert(`Felicitaciones, has vendido ${-qty} unidad de ${instSelected.ticker}`)
+        user.updateBalance(value)
+      } else {
+        alert(`Felicitaciones, has vendido ${-qty} unidades de ${instSelected.ticker}`)
+        user.updateBalance(value)
+      }
+
+      operation(instSelected, qty, price, value, user)
+      showInstruments(user)
+      showBalance(user)
+      showRecord(user.record)
+    } else {
+      alert(`No posee esa cantidad de ${instSelected.name}`)
+    }
+  }
+  $('#sInstrument').val('')
+  $('#sQty').val('')
+  $('#sPrice').val('')
 }
 // Función para mostrar solo criptomonedas en historial
 function filterAbstract(sel) {

@@ -14,8 +14,8 @@ class Client {
     return `${this.name} ${this.lastName[0]}.`
   }
   //Método para actualizar la disponibilidad de dinero del cliente
-	updateBalance(buy) { 
-		this.balance -= buy;
+	updateBalance(op) { 
+		this.balance -= op;
 	}
 
   updateRecord(history) {
@@ -48,6 +48,8 @@ class Client {
 // Clase para crear instancias de operaciones
 class Operations {
   constructor(instrument, qty, price, value) {
+    this.id = instrument.id;
+    this.type = instrument.type;
     this.ticker = instrument.ticker;
     this.name = instrument.name;
     this.qty = qty;
