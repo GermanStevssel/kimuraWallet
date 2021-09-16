@@ -84,7 +84,8 @@ function validateSell() {
   let sQty = $('#sQty').val()
 
   if (sQty === '' ||
-      isNaN(sQty)) {
+      isNaN(sQty) ||
+      sQty <= 0) {
     alert(`Ha ingresado una cantidad invalida`);
     continueSell = false
     $('#sQty').val('');
