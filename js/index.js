@@ -10,7 +10,6 @@ function signUp(e) {
   
   localStorage.setItem("user", JSON.stringify(user))
 
-  console.log(document.getElementById("signUpForm"))
   document.getElementById("signUpForm").submit()
 }
 

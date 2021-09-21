@@ -2,6 +2,14 @@
 let user;
 let instSelected;
 let qty = 0;
+// Funcióno para usar los datos guardados en localStorage
+function userdata(data) {
+  data.forEach()
+}
+// Leer si ya existen datos en localStorage
+if (localStorage.user != undefined) {    
+  userData(JSON.parse(localStorage.user));
+}
 // Función para formatear las fechas 
 function formatDate(date) {
   let day = date.getDate()
