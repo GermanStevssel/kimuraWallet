@@ -428,7 +428,8 @@
   font-size: 1.5rem;
 }
 .main .pageContainer h3 {
-  margin-top: 1rem;
+  font-size: 1.2rem;
+  margin-top: 0.7rem;
   margin-bottom: 0;
 }
 .main .pageContainer .availabilities {
@@ -571,6 +572,7 @@
 }
 .main .pageContWidth {
   width: 85vw;
+  margin-left: 15vw;
 }
 .main .mostrar {
   width: 15vw;
