@@ -38,14 +38,70 @@ function showModal(el) {
 function hideModal(e) {
   let modal = $('.overlay')[0] // Accedo al primer elemento del objeto generado por JQuery
   let dModal = $('.dOverlay')[0]
+  let wModal = $('.wOverlay')[0]
   let bModal = $('.bOverlay')[0]
   let sModal = $('.sOverlay')[0]
 
   if (e.target === modal ||
       e.target === dModal ||
+      e.target === wModal ||
       e.target === bModal ||
       e.target === sModal) {  
     e.target.classList.remove('show')
+  }
+}
+// Mostrar mensajes sin parametros
+function showMessage(operation) {
+  $(operation).toggle(500)
+              .delay(1500)
+              .toggle(500)
+}
+// Mostrar mensajes de operaciónes con parametros
+function appendMessage(qty, instrument, element) {
+  if (qty == 1 || qty == -1) {
+    if (element.includes('buy')) {
+      let buyMessage = $(element)
+      buyMessage.empty()
+
+      let p = $('<p>')
+      p.html(`Has comprado ${qty} unidad de ${instrument.ticker}`)
+
+      buyMessage.append(p)
+
+      showMessage(buyMessage)
+    } else {
+      let sellMessage = $(element)
+      sellMessage.empty()
+
+      let p = $('<p>')
+      p.html(`Has vendido ${-qty} unidad de ${instrument.ticker}`)
+
+      sellMessage.append(p)
+
+      showMessage(sellMessage)
+    }
+  } else {
+    if (element.includes('buy')) {
+      let buyMessage = $(element)
+      buyMessage.empty()
+
+      let p = $('<p>')
+      p.html(`Has comprado ${qty} unidades de ${instrument.ticker}`)
+
+      buyMessage.append(p)
+
+      showMessage(buyMessage)
+    } else {
+      let sellMessage = $(element)
+      sellMessage.empty()
+
+      let p = $('<p>')
+      p.html(`Has vendido ${-qty} unidades de ${instrument.ticker}`)
+
+      sellMessage.append(p)
+
+      showMessage(sellMessage)
+    }
   }
 }
 //Mostrar cartera de instrumentos
@@ -55,27 +111,33 @@ function showInstruments(user) {
   
   removeChilds(instruments)
 
-  let header = $("<div>")
-  header.addClass("header")
-  header.html(`<div class="instCol"><p>Nombre</p></div>
-    <div class="instCol"><p>Ticker</p></div>
-    <div class="instCol"><p>Cantidad</p></div>
-    <div class="instCol"><p>Precio</p></div>
-    <div class="instCol"><p>Valor</p></div>`
-  )
-  instruments.append(header)
-
-  wallet.forEach(element => {
-    let div = $("<div>")
-    div.addClass("instRow")
-    div.html(`<div class="instCol"><p>${element.name}</p></div>
-      <div class="instCol"><p>${element.ticker}</p></div>
-      <div class="instCol"><p>${element.qty}</p></div>
-      <div class="instCol"><p>${element.price}</p></div>
-      <div class="instCol"><p>${element.value}</p></div>`
+  if (user.wallet.length == 0) {
+    instruments.append(
+      `<p>No posee ningún instrumento en cartera</p>`
     )
-    instruments.append(div)
-  });
+  } else {
+    let header = $("<div>")
+    header.addClass("header")
+    header.html(`<div class="instCol"><p>Nombre</p></div>
+      <div class="instCol"><p>Ticker</p></div>
+      <div class="instCol"><p>Cantidad</p></div>
+      <div class="instCol"><p>Precio</p></div>
+      <div class="instCol"><p>Valor</p></div>`
+    )
+    instruments.append(header)
+
+    wallet.forEach(element => {
+      let div = $("<div>")
+      div.addClass("instRow")
+      div.html(`<div class="instCol"><p>${element.name}</p></div>
+        <div class="instCol"><p>${element.ticker}</p></div>
+        <div class="instCol"><p>${element.qty}</p></div>
+        <div class="instCol"><p>${element.price}</p></div>
+        <div class="instCol"><p>${element.value}</p></div>`
+      )
+      instruments.append(div)
+    });
+  }
 }
 //Mostrar historial de operaciones
 function showRecord(record) {
@@ -130,7 +192,3 @@ function setPrice() {
     }
   });
 }
-// Darle animación a la sidebar al clickear en el botón
-$('.navToggleBtn').click(animateSideBar);
-// Cargar el precio del producto seleccionado
-$('#bInstrument').change(setPrice)

@@ -40,37 +40,47 @@
           <i class="icon-arrow"></i>
         </button>
       </section>
+      <div class="background"></div>
       <section class="pageContainer">
-        <div class="container mt-2 d-flex justify-content-end">
-          <div class="d-flex flex-column justify-content-center me-4">
-            <h1 id="user">
-              User Wallet
-            </h1>
-            <button id="deposit" class="depositBtn" type="button" accesskey="f">Depositar</button>
+        <div class="container mt-2 d-flex justify-content-between">
+          <div class="d-flex">
+            <div class="availabilities">
+              <div class="balanceItems">
+                <div class="items">
+                  <p>TOTAL:</p>
+                </div>
+                <div class="items">
+                  <p>Instrumentos:</p>
+                </div>
+                <div class="items">
+                  <p>Disponibilidad:</p>
+                </div>
+              </div>
+              <div class="amounts" id="amount">
+                <div class="values">
+                  <p>0</p>
+                </div>
+                <div class="values">
+                  <p>0</p>
+                </div>
+                <div class="values">
+                  <p>0</p>
+                </div>
+              </div>
+            </div>
+            <div class="d-flex flex-column ms-3 align-items-center">
+              <h1 id="user">
+                User Wallet
+              </h1>
+              <div class="userAvatar">
+                <img src="/img/ico/default-user.png" alt="Avatar usuario" 
+                  class="userImg" width="52" height="52">
+              </div>
+            </div>
           </div>
-          <div class="disponibilidades">
-            <div class="balanceItems">
-              <div class="items">
-                <p>TOTAL:</p>
-              </div>
-              <div class="items">
-                <p>Instrumentos:</p>
-              </div>
-              <div class="items">
-                <p>Disponibilidad:</p>
-              </div>
-            </div>
-            <div class="amounts" id="amount">
-              <div class="values">
-                <p>0</p>
-              </div>
-              <div class="values">
-                <p>0</p>
-              </div>
-              <div class="values">
-                <p>0</p>
-              </div>
-            </div>
+          <div class="d-flex flex-column justify-content-center ms-4">
+            <button id="deposit" class="functionBtn" type="button" accesskey="d">Depositar</button>
+            <button id="withdraw" class="functionBtn" type="button" accesskey="r">Retirar</button>
           </div>
         </div>
 
@@ -93,7 +103,7 @@
         <!-- Fin sección de botones -->
 
         <!-- Sección Historial-->
-        <section class="container">
+        <section class="container historial">
           <h3>
             Historial
           </h3>
@@ -154,12 +164,12 @@
                 <ul>
                   <li>
                     <div class="inst">
-                      <label for="money">Cantidad</label>
-                      <input type="number" id="money" min="0" pattern="^[0-9]+">
+                      <label for="depMoney">Cantidad</label>
+                      <input type="number" id="depMoney" min="0" pattern="^[0-9]+">
                     </div>
                   </li>
                 </ul>
-                <button type="submit" id="dConfirm" class="depositBtn">
+                <button type="submit" id="dConfirm" class="confirmBtn">
                   Depositar
                 </button>
               </form>
@@ -167,6 +177,34 @@
           </div>
         </div>
         <!-- Fin modal de depósito -->
+
+        <!-- Modal de retiro -->
+        <div class="wOverlay">
+          <div class="modal">
+            <div class="modal__content">
+              <h2>Ingrese el monto a retirar</h2>
+              <form id="wform" class="form">
+                <ul>
+                  <li>
+                    <div class="inst">
+                      <label for="witMoney">Cantidad</label>
+                      <input type="number" id="witMoney" min="0" pattern="^[0-9]+">
+                    </div>
+                  </li>
+                </ul>
+                <div class="wMessage">
+                  <p class="text-center">
+                    No posee esa cantidad de dinero
+                  </p>
+                </div>
+                <button type="submit" id="wConfirm" class="confirmBtn">
+                  Retirar
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+        <!-- Fin modal de retiro -->
 
         <!-- Modal de compra -->
         <div class="bOverlay">
@@ -192,12 +230,27 @@
                     </div>
                   </li>
                   <li>
+                    <div class="buyQtyMessage">
+                      <p class="text-center">
+                        Ha ingresado una cantidad inválida
+                      </p>
+                    </div>
+                  </li>
+                  <li>
                     <div class="inst">
                       <label for="bPrice">Precio</label>
                       <input type="number" id="bPrice" readonly value="">
                     </div>
                   </li>
+                  <li>
+                    <div class="balanceMessage">
+                      <p class="text-center">
+                        Saldo insuficiente
+                      </p>
+                    </div>
+                  </li>
                 </ul>
+                <div class="buyMessage text-center"></div>
                 <button type="submit" id="bConfirm" class="confirmBtn">
                   Confirmar
                 </button>
@@ -230,12 +283,25 @@
                     </div>
                   </li>
                   <li>
+                    <div class="sellQtyMessage">
+                      <p class="text-center">
+                        Ha ingresado una cantidad inválida
+                      </p>
+                    </div>
+                  </li>
+                  <li>
                     <div class="inst">
                       <label for="sPrice">Precio</label>
                       <input type="number" id="sPrice">
                     </div>
                   </li>
                 </ul>
+                <div class="sellMessage text-center"></div>
+                <div class="noQtyMessage">
+                  <p class="text-center">
+                    No posee esa cantidad de unidades
+                  </p>
+                </div>
                 <button type="submit" id="sConfirm" class="confirmBtn">
                   Confirmar
                 </button>

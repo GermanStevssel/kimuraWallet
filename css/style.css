@@ -10,7 +10,8 @@
 .overlay,
 .dOverlay,
 .bOverlay,
-.sOverlay {
+.sOverlay,
+.wOverlay {
   display: none;
   position: fixed;
   top: 0;
@@ -22,7 +23,8 @@
 .overlay::before,
 .dOverlay::before,
 .bOverlay::before,
-.sOverlay::before {
+.sOverlay::before,
+.wOverlay::before {
   content: "X";
   color: #FAFAFA;
   font-size: 1.5em;
@@ -35,7 +37,8 @@
 .overlay .modal,
 .dOverlay .modal,
 .bOverlay .modal,
-.sOverlay .modal {
+.sOverlay .modal,
+.wOverlay .modal {
   /* visibility: hidden; */
   display: flex;
   flex-direction: column;
@@ -55,14 +58,16 @@
 .overlay .modal h2,
 .dOverlay .modal h2,
 .bOverlay .modal h2,
-.sOverlay .modal h2 {
+.sOverlay .modal h2,
+.wOverlay .modal h2 {
   font-size: 1.5rem;
   text-align: center;
 }
 .overlay .modal .modal__content,
 .dOverlay .modal .modal__content,
 .bOverlay .modal .modal__content,
-.sOverlay .modal .modal__content {
+.sOverlay .modal .modal__content,
+.wOverlay .modal .modal__content {
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -71,27 +76,31 @@
 .overlay .modal .modal__content .form,
 .dOverlay .modal .modal__content .form,
 .bOverlay .modal .modal__content .form,
-.sOverlay .modal .modal__content .form {
+.sOverlay .modal .modal__content .form,
+.wOverlay .modal .modal__content .form {
   display: flex;
   flex-direction: column;
-  width: 45%;
+  width: 60%;
 }
 .overlay .modal .modal__content .form ul,
 .dOverlay .modal .modal__content .form ul,
 .bOverlay .modal .modal__content .form ul,
-.sOverlay .modal .modal__content .form ul {
+.sOverlay .modal .modal__content .form ul,
+.wOverlay .modal .modal__content .form ul {
   padding: 0;
 }
 .overlay .modal .modal__content .form ul li,
 .dOverlay .modal .modal__content .form ul li,
 .bOverlay .modal .modal__content .form ul li,
-.sOverlay .modal .modal__content .form ul li {
+.sOverlay .modal .modal__content .form ul li,
+.wOverlay .modal .modal__content .form ul li {
   list-style: none;
 }
 .overlay .modal .modal__content .form ul li .inst,
 .dOverlay .modal .modal__content .form ul li .inst,
 .bOverlay .modal .modal__content .form ul li .inst,
-.sOverlay .modal .modal__content .form ul li .inst {
+.sOverlay .modal .modal__content .form ul li .inst,
+.wOverlay .modal .modal__content .form ul li .inst {
   display: flex;
   justify-content: space-between;
   margin: 1rem;
@@ -99,15 +108,54 @@
 .overlay .modal .modal__content .form ul li .inst .selection,
 .dOverlay .modal .modal__content .form ul li .inst .selection,
 .bOverlay .modal .modal__content .form ul li .inst .selection,
-.sOverlay .modal .modal__content .form ul li .inst .selection {
+.sOverlay .modal .modal__content .form ul li .inst .selection,
+.wOverlay .modal .modal__content .form ul li .inst .selection {
   position: relative;
   z-index: 300;
 }
 .overlay .modal .modal__content .form ul li .inst input,
 .dOverlay .modal .modal__content .form ul li .inst input,
 .bOverlay .modal .modal__content .form ul li .inst input,
-.sOverlay .modal .modal__content .form ul li .inst input {
+.sOverlay .modal .modal__content .form ul li .inst input,
+.wOverlay .modal .modal__content .form ul li .inst input {
   width: 92px;
+}
+.overlay .modal .modal__content .form .wMessage,
+.overlay .modal .modal__content .form .buyQtyMessage,
+.overlay .modal .modal__content .form .sellQtyMessage,
+.overlay .modal .modal__content .form .balanceMessage,
+.overlay .modal .modal__content .form .buyMessage,
+.overlay .modal .modal__content .form .sellMessage,
+.overlay .modal .modal__content .form .noQtyMessage,
+.dOverlay .modal .modal__content .form .wMessage,
+.dOverlay .modal .modal__content .form .buyQtyMessage,
+.dOverlay .modal .modal__content .form .sellQtyMessage,
+.dOverlay .modal .modal__content .form .balanceMessage,
+.dOverlay .modal .modal__content .form .buyMessage,
+.dOverlay .modal .modal__content .form .sellMessage,
+.dOverlay .modal .modal__content .form .noQtyMessage,
+.bOverlay .modal .modal__content .form .wMessage,
+.bOverlay .modal .modal__content .form .buyQtyMessage,
+.bOverlay .modal .modal__content .form .sellQtyMessage,
+.bOverlay .modal .modal__content .form .balanceMessage,
+.bOverlay .modal .modal__content .form .buyMessage,
+.bOverlay .modal .modal__content .form .sellMessage,
+.bOverlay .modal .modal__content .form .noQtyMessage,
+.sOverlay .modal .modal__content .form .wMessage,
+.sOverlay .modal .modal__content .form .buyQtyMessage,
+.sOverlay .modal .modal__content .form .sellQtyMessage,
+.sOverlay .modal .modal__content .form .balanceMessage,
+.sOverlay .modal .modal__content .form .buyMessage,
+.sOverlay .modal .modal__content .form .sellMessage,
+.sOverlay .modal .modal__content .form .noQtyMessage,
+.wOverlay .modal .modal__content .form .wMessage,
+.wOverlay .modal .modal__content .form .buyQtyMessage,
+.wOverlay .modal .modal__content .form .sellQtyMessage,
+.wOverlay .modal .modal__content .form .balanceMessage,
+.wOverlay .modal .modal__content .form .buyMessage,
+.wOverlay .modal .modal__content .form .sellMessage,
+.wOverlay .modal .modal__content .form .noQtyMessage {
+  display: none;
 }
 
 .preHeader .session a {
@@ -126,19 +174,30 @@
   justify-content: flex-end;
 }
 
-.depositBtn,
+.functionBtn,
 .nxtBtn {
   color: #FFFFFF;
   font-size: 0.8rem;
   font-weight: 700;
+  width: 95px;
+  margin: 0.5rem;
   padding: 0.1rem 0.4rem;
   text-transform: uppercase;
   background-color: #0c107c;
   border-radius: 5px;
   border: 2px solid #0c107c;
-  margin: 0 auto;
 }
-.depositBtn:hover,
+.functionBtn:nth-child(even),
+.nxtBtn:nth-child(even) {
+  background-color: #77DD77;
+  border: 2px solid #77DD77;
+}
+.functionBtn:nth-child(even):hover,
+.nxtBtn:nth-child(even):hover {
+  background-color: #36ac36;
+  border: 2px solid #36ac36;
+}
+.functionBtn:hover,
 .nxtBtn:hover {
   background-color: #3454db;
   border: 2px solid #3454db;
@@ -155,7 +214,7 @@
   text-transform: uppercase;
   width: 105px;
   margin: 0 3rem;
-  padding: 0.7rem 0;
+  padding: 0.5rem 0;
   background-color: #77DD77;
   border-radius: 5px;
   border: 2px solid #77DD77;
@@ -170,7 +229,7 @@
   text-transform: uppercase;
   width: 105px;
   margin: 0 3rem;
-  padding: 0.7rem 0;
+  padding: 0.5rem 0;
   background-color: #d9140d;
   border-radius: 5px;
   border: 2px solid #d9140d;
@@ -182,7 +241,6 @@
 
 .confirmBtn {
   margin: 0.5rem auto 0;
-  width: 60%;
   padding: 0.7rem;
   background-color: #77DD77;
   border-radius: 5px;
@@ -300,7 +358,9 @@
   flex-direction: column;
   flex-wrap: wrap;
   flex: 1;
-  position: relative;
+  position: fixed;
+  top: 0;
+  left: 0;
   background-color: #0c107c;
   height: 100%;
   width: 5%;
@@ -316,7 +376,7 @@
   align-items: center;
 }
 .main .nav .navCategories .navIcons a {
-  padding: 20px;
+  padding: 18px;
   text-decoration: none;
 }
 .main .nav .navCategories .navIcons a i {
@@ -350,8 +410,17 @@
   -o-transform: rotateY(180deg);
   transform: rotateY(180deg);
 }
-.main .pageContainer {
+.main .background {
   background-color: #eff3f6;
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: -1;
+}
+.main .pageContainer {
+  margin-left: 5vw;
   height: 100vh;
   width: 95vw;
 }
@@ -359,9 +428,10 @@
   font-size: 1.5rem;
 }
 .main .pageContainer h3 {
+  margin-top: 1rem;
   margin-bottom: 0;
 }
-.main .pageContainer .disponibilidades {
+.main .pageContainer .availabilities {
   display: flex;
   justify-content: space-between;
   line-height: 0.5;
@@ -370,16 +440,16 @@
   border-radius: 10px;
   box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.06);
 }
-.main .pageContainer .disponibilidades p {
+.main .pageContainer .availabilities p {
   font-size: 1rem;
 }
-.main .pageContainer .disponibilidades .balanceItems,
-.main .pageContainer .disponibilidades .amounts {
+.main .pageContainer .availabilities .balanceItems,
+.main .pageContainer .availabilities .amounts {
   display: flex;
   flex-direction: column;
 }
-.main .pageContainer .disponibilidades .balanceItems .items,
-.main .pageContainer .disponibilidades .amounts .items {
+.main .pageContainer .availabilities .balanceItems .items,
+.main .pageContainer .availabilities .amounts .items {
   display: flex;
   flex: 1;
   padding: 0 0.5rem;
@@ -387,8 +457,8 @@
   align-items: center;
   min-width: 60px;
 }
-.main .pageContainer .disponibilidades .balanceItems .values,
-.main .pageContainer .disponibilidades .amounts .values {
+.main .pageContainer .availabilities .balanceItems .values,
+.main .pageContainer .availabilities .amounts .values {
   display: flex;
   flex: 1;
   padding-right: 0.5rem;
@@ -396,9 +466,18 @@
   align-items: baseline;
   min-width: 60px;
 }
-.main .pageContainer .disponibilidades .balanceItems .values::before,
-.main .pageContainer .disponibilidades .amounts .values::before {
+.main .pageContainer .availabilities .balanceItems .values::before,
+.main .pageContainer .availabilities .amounts .values::before {
   content: "$";
+}
+.main .pageContainer .userAvatar {
+  width: 52px;
+  height: 52px;
+  background-color: #FFFFFF;
+}
+.main .pageContainer .userAvatar .userImg {
+  border: 2px solid #e0edff;
+  cursor: pointer;
 }
 .main .pageContainer .actions {
   display: flex;
@@ -447,6 +526,9 @@
 .main .pageContainer .actions .filter .options .actionBtn:last-child,
 .main .pageContainer .actions .order .options .actionBtn:last-child {
   border-radius: 0 0 9px 0;
+}
+.main .pageContainer .historial {
+  padding-bottom: 2rem;
 }
 .main .pageContainer .displayConts {
   display: flex;

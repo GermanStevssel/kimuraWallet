@@ -7,14 +7,24 @@ let email = logUser.email
 user = new Client(dni, name, lastName, email) 
 
 $(document).ready(showUser(user))
+// Darle animación a la sidebar al clickear en el botón
+$('.navToggleBtn').click(animateSideBar);
 // Mostrar modal de depósito
 $('#deposit').click(() => {
   showModal('.dOverlay')
+})
+// Mostrar modal de depósito
+$('#withdraw').click(() => {
+  showModal('.wOverlay')
 })
 // Al clickear llama la función deposit, para depositar dinero en la cuenta
 $('#dConfirm').click(deposit)
 // Ocultar modal para depositar
 $('.dOverlay').on('click', hideModal)
+// Al clickear llama la función withdraw, para retirar dinero en la cuenta
+$('#wConfirm').click(withdraw)
+// Ocultar modal para retirar
+$('.wOverlay').on('click', hideModal)
 /* Al clickear el boton de comprar, toma los instrumentos del json y 
 * los da cómo opción, además de mostrar el modal de compra
 */
@@ -38,6 +48,8 @@ $('#buyBtn').on('click', () => {
   // Mostrar modal de compra
   showModal('.bOverlay')
 });
+// Cargar el precio del producto seleccionado
+$('#bInstrument').change(setPrice)
 /* Al clickear el boton de vender, toma los instrumentos de la billetera
 * del usuario y los da cómo opción, además de mostrar el modal de venta
 */

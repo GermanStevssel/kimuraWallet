@@ -19,17 +19,28 @@
   justify-content: flex-end;
 }
 
-.depositBtn,
+.functionBtn,
 .nxtBtn {
   color: $white;
   font-size: 0.8rem;
   font-weight: 700;
+  width: 95px;
+  margin: 0.5rem;
   padding: 0.1rem 0.4rem;
   text-transform: uppercase;
   background-color: $blue0;
   border-radius: 5px;
   border: 2px solid $blue0;
-  margin: 0 auto;
+
+  &:nth-child(even) {
+    background-color: $green1;
+    border: 2px solid $green1;
+
+    &:hover {
+      background-color: $green0;
+      border: 2px solid $green0;
+    }
+  }
 
   &:hover {
     background-color: $blue1;
@@ -48,7 +59,7 @@
     text-transform: uppercase;
     width: 105px;
     margin: 0 3rem;
-    padding: 0.7rem 0;
+    padding: 0.5rem 0;
     background-color: $green1;
     border-radius: 5px;
     border: 2px solid $green1;
@@ -65,7 +76,7 @@
     text-transform: uppercase;
     width: 105px;
     margin: 0 3rem;
-    padding: 0.7rem 0;
+    padding: 0.5rem 0;
     background-color: $red1;
     border-radius: 5px;
     border: 2px solid $red1;
@@ -79,7 +90,6 @@
 
 .confirmBtn {
   margin: 0.5rem auto 0;
-  width: 60%;
   padding: 0.7rem;
   background-color: $green1;
   border-radius: 5px;

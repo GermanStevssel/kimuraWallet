@@ -12,7 +12,9 @@
     flex-direction: column;
     flex-wrap: wrap;
     flex: 1;
-    position: relative;
+    position: fixed;
+    top: 0;
+    left: 0;
     background-color: $blue0;
     height: 100%;
     width: 5%;
@@ -28,7 +30,7 @@
         align-items: center;
           
         a {
-          padding: 20px;
+          padding: 18px;
           text-decoration: none;
 
           i {
@@ -73,8 +75,17 @@
     }
   }
 
-  .pageContainer {
+  .background {
     background-color: $gray2;
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: -1;
+  }
+  .pageContainer {
+    margin-left: 5vw;
     height: 100vh;
     width: 95vw;
 
@@ -83,10 +94,11 @@
     }
 
     h3 {
+      margin-top: 1rem;
       margin-bottom: 0;
     }
 
-    .disponibilidades {
+    .availabilities {
       display: flex;
       justify-content: space-between;
       line-height: 0.5;
@@ -126,6 +138,17 @@
            
           }
         }
+      }
+    }
+
+    .userAvatar {
+      width: 52px;
+      height: 52px;
+      background-color: $white;
+
+      .userImg {
+        border: 2px solid $blue2;
+        cursor: pointer;
       }
     }
 
@@ -178,6 +201,10 @@
           }
         }
       }
+    }
+
+    .historial {
+      padding-bottom: 2rem;
     }
 
     .displayConts {

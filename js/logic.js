@@ -21,9 +21,9 @@ function formatDate(date) {
 // Función para depositar fondos en la cuenta
 function deposit(e) {
   e.preventDefault()
-  let money = parseInt($('#money').val())
+  let money = parseInt($('#depMoney').val())
 
-  if ($('#money').val() != '') {
+  if ($('#depMoney').val() != '') {
     if (user.balance === undefined) {
       user.balance = money
     } else {
@@ -33,7 +33,23 @@ function deposit(e) {
     showBalance(user)
   }
 
-  $('#money').val('')  
+  $('#depMoney').val('')  
+}
+// Función para retirar fondos en la cuenta
+function withdraw(e) {
+  e.preventDefault()
+  let money = parseInt($('#witMoney').val())
+
+  if ($('#witMoney').val() != '') {
+    if (money > user.balance || user.balance === undefined) {
+      showMessage('.wMessage')
+    } else {
+      user.balance -= money
+      showBalance(user)
+    }
+  }
+
+  $('#witMoney').val('')  
 }
 // Función para encontrar el instrumento que seleccionó el usuario
 function findInstrument() {
@@ -60,8 +76,6 @@ function operation(instrument, qty, price, value, user) {
   let addRecord = new Summary(formDate, type, instrument, qty, price, value)
   let addOperation = new Operations(instrument, qty, price, value)
 
-  console.log(addRecord)
-  console.log(addOperation)
   user.updateRecord(addRecord)
   user.updateWallet(addOperation)
 }
@@ -72,7 +86,7 @@ function validateBuy() {
   if (bQty === '' || 
       isNaN(bQty) || 
       bQty <= 0) {
-    alert(`Ha ingresado una cantidad invalida`);
+    showMessage('.buyQtyMessage');
     continueBuy = false;
     $('#bQty').val('');
   } else {
@@ -86,7 +100,7 @@ function validateSell() {
   if (sQty === '' ||
       isNaN(sQty) ||
       sQty <= 0) {
-    alert(`Ha ingresado una cantidad invalida`);
+    showMessage('.sellQtyMessage');
     continueSell = false
     $('#sQty').val('');
   } else {
@@ -106,10 +120,10 @@ function buy(e) {
 
     if (balance >= value) { 
       if (qty == 1) {
-        alert(`Felicitaciones, has comprado ${qty} unidad de ${instSelected.ticker}`)
+        appendMessage(qty, instSelected, '.buyMessage')
         user.updateBalance(value)
       } else {
-        alert(`Felicitaciones, has comprado ${qty} unidades de ${instSelected.ticker}`)
+        appendMessage(qty, instSelected, '.buyMessage')
         user.updateBalance(value)
       }
 
@@ -118,9 +132,10 @@ function buy(e) {
       showBalance(user)
       showRecord(user.record)
     } else {
-      alert(`Saldo insuficiente`)
+      showMessage('.balanceMessage')
     }
   }
+
   $('#bInstrument').val('')
   $('#bQty').val('')
   $('#bPrice').val('')
@@ -138,21 +153,36 @@ function sell(e) {
 
     if (-qty <= qtyAvail) {
       if (qty == 1) {
-        alert(`Felicitaciones, has vendido ${-qty} unidad de ${instSelected.ticker}`)
+        appendMessage(qty, instSelected, '.sellMessage')
         user.updateBalance(value)
       } else {
-        alert(`Felicitaciones, has vendido ${-qty} unidades de ${instSelected.ticker}`)
+        appendMessage(qty, instSelected, '.sellMessage')
         user.updateBalance(value)
       }
 
       operation(instSelected, qty, price, value, user)
+
+      if (instSelected.qty == 0) {
+        let id = instSelected.id
+        let index = 0
+        
+        user.wallet.forEach(element => {
+          if (element.id == id) {
+            index = user.wallet.indexOf(element)
+          }
+        })
+
+        user.wallet.splice(index, 1)
+      }
+
       showInstruments(user)
       showBalance(user)
       showRecord(user.record)
     } else {
-      alert(`No posee esa cantidad de ${instSelected.name}`)
+      showMessage('.noQtyMessage')
     }
   }
+
   $('#sInstrument').val('')
   $('#sQty').val('')
   $('#sPrice').val('')
@@ -183,4 +213,4 @@ function arrangedRecord(sel) {
       recordArranged = record.slice(0).sort((a, b) => a.value - b.value)
       showRecord(recordArranged)
     }
-  }
+}
