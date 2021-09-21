@@ -2,14 +2,6 @@
 let user;
 let instSelected;
 let qty = 0;
-// Funcióno para usar los datos guardados en localStorage
-function userdata(data) {
-  data.forEach()
-}
-// Leer si ya existen datos en localStorage
-if (localStorage.user != undefined) {    
-  userData(JSON.parse(localStorage.user));
-}
 // Función para formatear las fechas 
 function formatDate(date) {
   let day = date.getDate()
@@ -26,10 +18,17 @@ function formatDate(date) {
 
   return date
 }
+// Función para redondear a 2 decimales
+function roundTwoDecimals(num) {
+  num = num * 100;
+  num = Math.round(num);
+  num = num / 100;
+  return num;
+}
 // Función para depositar fondos en la cuenta
 function deposit(e) {
   e.preventDefault()
-  let money = parseInt($('#depMoney').val())
+  let money = roundTwoDecimals(parseInt($('#depMoney').val()))
 
   if ($('#depMoney').val() != '') {
     if (user.balance === undefined) {
@@ -124,7 +123,7 @@ function buy(e) {
     qty = parseInt($('#bQty').val())
     let price = $('#bPrice').val()
     let balance = user.balance
-    let value = qty * price
+    let value = roundTwoDecimals(qty * price)
 
     if (balance >= value) { 
       if (qty == 1) {
@@ -157,7 +156,7 @@ function sell(e) {
     qty = -parseInt($('#sQty').val())
     let price = $('#sPrice').val()
     let qtyAvail = instSelected.qty
-    let value = qty * price
+    let value = roundTwoDecimals(qty * price)
 
     if (-qty <= qtyAvail) {
       if (qty == 1) {
