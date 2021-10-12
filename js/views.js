@@ -25,7 +25,7 @@ function showBalance(user) {
   for (const item of BALANCE) {
     let div = $("<div>")
     div.addClass("values")
-    div.html(`<p>${item}</p>`)
+    div.html(`<p>${formatter.format(item)}</p>`)
     $(".amounts").append(div)
   }
 }
@@ -132,8 +132,8 @@ function showInstruments(user) {
       div.html(`<div class="instCol"><p>${element.name}</p></div>
         <div class="instCol"><p>${element.ticker}</p></div>
         <div class="instCol"><p>${element.qty}</p></div>
-        <div class="instCol"><p>${element.price}</p></div>
-        <div class="instCol"><p>${element.value}</p></div>`
+        <div class="instCol"><p>${formatter.format(element.price)}</p></div>
+        <div class="instCol"><p>${formatter.format(element.value)}</p></div>`
       )
       instruments.append(div)
     });
@@ -165,8 +165,8 @@ function showRecord(record) {
       <div class="instCol"><p>${element.name}</p></div>
       <div class="instCol"><p>${element.ticker}</p></div>
       <div class="instCol"><p>${element.qty}</p></div>
-      <div class="instCol"><p>${element.price}</p></div>
-      <div class="instCol"><p>${element.value}</p></div>`
+      <div class="instCol"><p>${formatter.format(element.price)}</p></div>
+      <div class="instCol"><p>${formatter.format(element.value)}</p></div>`
     )
     recCont.append(items)
   });

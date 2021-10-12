@@ -18,6 +18,12 @@ function formatDate(date) {
 
   return date
 }
+// Formatear números a moneda
+const formatter = new Intl.NumberFormat('en-US', {
+  style: 'currency',
+  currency: 'USD',
+  minimumFractionDigits: 0
+});
 // Función para redondear a 2 decimales
 function roundTwoDecimals(num) {
   num = num * 100;
